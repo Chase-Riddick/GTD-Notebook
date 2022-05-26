@@ -1,17 +1,10 @@
-/* form {
-    display: flex;
-    width: 400px;
-    border: 1px black solid;
-    margin: auto;
-  } */
-
-  .cell {
+.cell {
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
-  .user-login-form {
+  .signup-form {
       width: 400px;
       margin: auto;
       border: black 1px solid;
@@ -19,6 +12,6 @@
       margin-top: 15%;
   }
 
-  .user-login-form > * {
+  .signup-form > * {
       margin-bottom: 5px;
   }
