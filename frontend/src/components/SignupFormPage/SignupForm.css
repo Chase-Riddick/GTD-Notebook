@@ -1,0 +1,17 @@
+.cell {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .signup-form {
+      width: 400px;
+      margin: auto;
+      border: black 1px solid;
+      padding: 10px;
+      margin-top: 15%;
+  }
+
+  .signup-form > * {
+      margin-bottom: 5px;
+  }
