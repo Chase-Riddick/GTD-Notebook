@@ -1,27 +1,25 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNotes } from '../../store/notes';
+import { getNotesByNotebook } from '../../store/notes';
 import { useEffect } from 'react';
 
-const Folder = () => {
+const Folder = ({id}) => {
     const dispatch = useDispatch();
     const notes = useSelector(state=>state.noteState.list);
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
 
-    const { folderTitle } = useParams();
     console.log("*******************************")
-    console.log(notes)
+
 
     useEffect(() => {
-        console.log("a dispatch has happennedd")
-        dispatch(getNotes(userId, folderTitle));
+        dispatch(getNotesByNotebook(id));
     }, [dispatch]);
 
   return (
     <div>
         <p>
-            Hello World!
+            {`Hello World! This is folder ${id}`}
         </p>
 
       {notes.map(({ id, title, content }) => (

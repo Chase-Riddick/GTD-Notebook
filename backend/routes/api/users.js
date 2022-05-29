@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Folder } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -29,6 +29,7 @@ const validateSignup = [
     handleValidationErrors
   ];
 
+
 router.post(
     '/',
     validateSignup,
@@ -43,5 +44,10 @@ router.post(
       });
     })
   );
+
+  router.get('/:id/folders', asyncHandler(async function(req, res) {
+    const folders = await Folder.foldersByUserId(req.params.id)
+    return res.json({ folders })
+}))
 
 module.exports = router;

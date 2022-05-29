@@ -5,15 +5,23 @@ const load = list => ({
     list
   });
 
-export const getNotes = (userId, folderTitle) => async dispatch => {
-    console.log("getNotes entered")
-    const response = await fetch(`/api/folders/${userId}/${folderTitle}`);
-    console.log("getNotes response received")
+export const getNotesByNotebook = (folderId) => async dispatch => {
+    const response = await fetch(`/api/folders/${folderId}`);
     if (response.ok) {
         const list = await response.json();
         dispatch(load(list));
     }
 };
+
+// export const getNotesByNotebook = (userId, folderTitle) => async dispatch => {
+//     console.log("getNotes entered")
+//     const response = await fetch(`/api/folders/${userId}/${folderTitle}`);
+//     console.log("getNotes response received")
+//     if (response.ok) {
+//         const list = await response.json();
+//         dispatch(load(list));
+//     }
+// };
 
 const initialState = { list: [] };
 
