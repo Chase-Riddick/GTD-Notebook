@@ -1,0 +1,14 @@
+.navigation-bar {
+    /* width: 100%; */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: black solid 1px;
+}
+
+.navigation-bar-item {
+    list-style: none;
+    height: 40px;
+    border: black solid 1px;
+    margin: 3px;
+}

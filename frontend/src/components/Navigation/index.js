@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import FolderList from '../FolderList';
+import '../../css/Navigation.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -23,12 +24,22 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navigation-bar'>
-    <ul>
-      <li className='navigation-bar-item'>
+      <div className='navigation-bar-item'>
         <NavLink exact to="/">Home</NavLink>
+      </div>
+      <div className='navigation-bar-item'>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+      <div className='navigation-bar-item'>
+        Stand-in Text
+      </div>
+      <div className='navigation-bar-item'>
+      Stand-in Text
+      </div>
+      <div className='navigation-bar-item'>
+      Stand-in Text
+      </div>
+      <FolderList />
     </div>
   );
 }
