@@ -1,15 +1,18 @@
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFolders } from '../../store/folderReducer';
+import { getFolders } from '../../store/folders';
 import { useEffect } from 'react';
 
 const FolderList = () => {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const folders = useSelector(state=>state.folderState.list);
+
+  const userId = sessionUser.id;
   console.log(folders);
 
   useEffect(() => {
-      dispatch(getFolders());
+      dispatch(getFolders(userId ));
   }, [dispatch]);
 
   return (
@@ -17,9 +20,9 @@ const FolderList = () => {
         <p>
             Hello World!
         </p>
-      {/* {folders.map(({ id, title }) => (
-        <li key={id}><NavLink to={`/article/${id}`}>{title}</NavLink></li>
-      ))} */}
+      {folders.map(({ id, title }) => (
+        <li key={id}><NavLink to={`/folder/${title}`}>{title}</NavLink></li>
+      ))}
     </div>
   );
 };

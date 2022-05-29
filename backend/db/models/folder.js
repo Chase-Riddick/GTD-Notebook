@@ -44,7 +44,6 @@ module.exports = (sequelize, DataTypes) => {
       where: {
         userId,
       },
-      order: ['id', 'DESC'],
     })
   };
 

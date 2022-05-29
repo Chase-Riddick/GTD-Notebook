@@ -5,8 +5,8 @@ const load = list => ({
     list
   });
 
-export const getFolders = () => async dispatch => {
-const response = await fetch(`/api/folders`);
+export const getFolders = (userId) => async dispatch => {
+const response = await fetch(`/api/folders/${userId}`);
 if (response.ok) {
     const list = await response.json();
     dispatch(load(list));
@@ -26,7 +26,7 @@ const initialState = { list: [] };
 const folderReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
-            return { ...state, list: [...action.list] };
+            return { ...state, list: [...action.list.folders] };
         // case LOAD:
         //     const allPokemon = {};
         //     action.list.forEach(pokemon => {

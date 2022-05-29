@@ -24,7 +24,7 @@ function App() {
       <Route path="/signup">
         <SignupFormPage />
       </Route>
-      <Route path="/">
+      <Route path={["/", "/folders", "/folder/:folderName"]} exact>
         <Main isLoaded={isLoaded}/>
       </Route>
     </Switch>
