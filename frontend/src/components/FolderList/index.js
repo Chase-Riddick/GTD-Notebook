@@ -21,7 +21,7 @@ const FolderList = () => {
             Hello World!
         </p>
       {folders.map(({ id, title }) => (
-        <li key={id}><NavLink to={`/folder/${title}`}>{title}</NavLink></li>
+        <li key={`navigation-folder-item-${id}`}><NavLink to={`/folder/${title}`}>{title}</NavLink></li>
       ))}
     </div>
   );

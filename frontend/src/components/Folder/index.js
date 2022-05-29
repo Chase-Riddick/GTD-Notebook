@@ -1,17 +1,20 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNotes } from '../../store/articleReducer';
+import { getNotes } from '../../store/notes';
 import { useEffect } from 'react';
 
 const Folder = () => {
     const dispatch = useDispatch();
-    const notes = useSelector(state=>state.noteState.list.notes);
+    const notes = useSelector(state=>state.noteState.list);
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
 
     const { folderTitle } = useParams();
+    console.log("*******************************")
+    console.log(notes)
 
     useEffect(() => {
+        console.log("a dispatch has happennedd")
         dispatch(getNotes(userId, folderTitle));
     }, [dispatch]);
 
@@ -34,4 +37,4 @@ const Folder = () => {
   );
 };
 
-export default SingleArticle;
+export default Folder;

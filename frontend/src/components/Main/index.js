@@ -1,8 +1,9 @@
 // import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
+// import * as sessionActions from '../../store/session';
+import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Navigation from '../Navigation';
+import Folder from '../Folder';
 
 import '../../css/Main.css';
 

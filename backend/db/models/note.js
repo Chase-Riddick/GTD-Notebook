@@ -50,5 +50,24 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
   });
+
+  Note.byUserAndFolder = async function (userId, title) {
+    return await Note.findAll({
+      where: {
+        userId,
+        include: {
+          model: Folder,
+          where: {
+            title
+          }
+        }
+      },
+    })
+  };
+
+  Note.getAll = async function (userId) {
+    return await Note.findAll();
+  };
+
   return Note;
 };
