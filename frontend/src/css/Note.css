@@ -1,0 +1,30 @@
+.note-card {
+    border: black 1px solid;
+    border-radius: 3px;
+    margin: 0px 1px 1px 2px;
+    background-color: rgb(252, 251, 249);
+}
+
+.note-card-title-div {
+    font-weight: 600;
+}
+
+.note-card:hover {
+    border: black 1px solid;
+    background-color: white;
+
+}
+
+.note-card:active {
+    border: rgb(237, 74, 49) 2px solid;
+}
+
+.note-view-header {
+    display: flex;
+    justify-content: end;
+}
+
+.header-button {
+    background-color: rgb(249, 131, 112);
+    border-radius: 4px;
+}

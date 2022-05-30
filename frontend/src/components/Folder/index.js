@@ -1,3 +1,6 @@
+import '../../css/Note.css';
+import '../../css/Folder.css';
+
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotesByNotebook } from '../../store/notes';
@@ -5,7 +8,7 @@ import { useEffect } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 
 const Folder = ({id}) => {
-    const { contentView } = useContentView();
+    const { contentView, setNoteView, setActiveNote } = useContentView();
     const dispatch = useDispatch();
     const notes = useSelector(state=>state.noteState.list);
     const sessionUser = useSelector(state => state.session.user);
@@ -19,18 +22,30 @@ const Folder = ({id}) => {
     }, [dispatch, contentView]);
 
   return (
-    <div>
-        <p>
-            {`Hello World! This is folder ${id}`}
-        </p>
+    <div className='folder-note-list'>
 
-      {notes.map(({ id, title, content }) => (
-        <div className='note'>
-            <ul>
-                 <li key={`note-${id}-id`}>{id}</li>
-                 <li key={`note-${id}-title`}>{title}</li>
-                 <li key={`note-${id}-content`}>{content}</li>
-            </ul>
+      <div className='folder-note-list-header'>
+        <div className='list-headers'>
+          <h3>{`Folder ${id} Notes`}</h3>
+        </div>
+        <div className='list-header-buttons'>
+          <button
+          className='create-note-button'
+          onClick={(() => setNoteView('create'))}
+          >Create Note</button>
+        </div>
+      </div>
+
+      {notes.map((note) => (
+        <div className='note-card'
+        onClick={(() => {
+          setNoteView('note');
+          setActiveNote(note);
+          })}>
+         <div className='note-card-header-div'>
+            <div className='note-card-title-div'>{note.title}</div>
+         </div>
+          <div className='note-card-content-div'>{note.content}</div>
         </div>
       ))}
     </div>

@@ -1,11 +1,19 @@
 import '../../css/SideView.css'
 import ComposeNote from '../ComposeNote';
+import DisplayNote from '../DisplayNote';
+import { useContentView } from '../../context/ContentViewContext';
+
 export default function SideView () {
+    const { noteView } = useContentView();
 
     return (
         <>
-            <h2>Hello from SideView</h2>
-            <ComposeNote />
+            {noteView && noteView === 'create' &&
+             <ComposeNote />
+            }
+            {noteView && noteView === 'note' &&
+             <DisplayNote />
+            }
         </>
     )
 };

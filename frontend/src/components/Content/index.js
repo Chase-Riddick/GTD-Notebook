@@ -28,16 +28,12 @@ const Content = () => {
 
   return (
     <div>
-        <p>
-            Hello World! This is from Content.
-        </p>
         {
         {
           'folder': <Folder id={id()}/>,
           'home': <Home />
         }[contentType()]
       }
-
     </div>
   );
 };

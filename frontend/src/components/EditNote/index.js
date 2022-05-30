@@ -2,14 +2,16 @@ import '../../css/ComposeNote.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useContentView } from '../../context/ContentViewContext';
-import { addNoteToNotebook } from '../../store/notes';
+import { editNote } from '../../store/notes';
 // import Thunk Action Creators
 
-export default function ComposeNote() {
+export default function EditNote ({note}) {
     const { folderView } =  useContentView();
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+
+    const [title, setTitle] = useState(note.title);
+    const [content, setContent] = useState(note.content);
+
     const sessionUser = useSelector(state => state.session.user);
 
 
@@ -22,16 +24,18 @@ export default function ComposeNote() {
 
         const userId = sessionUser.id;
         const folderId = Number(folderView);
+        const id = note.id;
 
         const payload = {
+            id,
             userId,
             folderId,
             title,
             content,
         }
 
-        let createdNote = dispatch(addNoteToNotebook(payload));
-        if (createdNote) {
+        let editedNote = dispatch(editNote(payload));
+        if (editedNote) {
             reset();
           }
       };
@@ -50,7 +54,6 @@ export default function ComposeNote() {
     return (
         <section className="">
 
-            <h2>Compose Note for {folderView}</h2>
 
             <form onSubmit={handleSubmit} className="compose-note-form" hidden={!folderView}>
 

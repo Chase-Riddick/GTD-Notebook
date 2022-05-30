@@ -77,5 +77,10 @@ module.exports = (sequelize, DataTypes) => {
     return await Note.findAll();
   };
 
+  // Note.create = async function (details) {
+  //   const note = await Note.create(details);
+  //   return note;
+  // }
+
   return Note;
 };

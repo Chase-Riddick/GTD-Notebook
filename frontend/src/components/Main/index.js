@@ -28,7 +28,6 @@ export default function Main ({isLoaded}) {
             <ContentViewProvider>
                 <Navigation isLoaded={isLoaded} className="navigation-container"/>
                 <main className='main-view'>
-                    <h2>Hello World! This is from Main.</h2>
                 <Content />
                 </main>
                 <div className='right-bar'>
