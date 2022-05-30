@@ -6,6 +6,7 @@ import Navigation from '../Navigation';
 import Folder from '../Folder';
 import Content from '../Content';
 import ContentViewProvider from '../../context/ContentViewContext';
+import SideView from '../SideView';
 
 import '../../css/Main.css';
 
@@ -30,6 +31,9 @@ export default function Main ({isLoaded}) {
                     <h2>Hello World! This is from Main.</h2>
                 <Content />
                 </main>
+                <div className='right-bar'>
+                    <SideView />
+                </div>
             </ContentViewProvider>
         </div>
     )

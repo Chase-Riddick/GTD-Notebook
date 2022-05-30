@@ -27,14 +27,6 @@ function Navigation({ isLoaded }){
     );
   }
 
-
-      useEffect(() => {
-        console.log("Clicked2");
-        console.log(contentView);
-      }, [contentView]);
-
-
-  // setContentView('home')
   return (
     <div className='navigation-bar'>
       <div className='navigation-bar-item' >

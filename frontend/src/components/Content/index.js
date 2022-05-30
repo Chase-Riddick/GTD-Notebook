@@ -19,26 +19,12 @@ const Content = () => {
         else return contentView;
     }
 
-    console.log(contentType)
 
     const id = () => {
         let contentViewCopy = contentView;
         if (contentViewCopy.includes('-')) return contentViewCopy.split('-')[1];
         else return null;
     }
-
-    // {()=> {
-    //     switch (contentType) {
-    //         case 'folder':
-    //             return (
-    //                 (<Folder id={id}/>)
-    //             );
-    //         default:
-    //             return (
-    //                ( <Home />)
-    //             );
-    //     }}}
-
 
   return (
     <div>
