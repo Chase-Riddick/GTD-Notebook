@@ -1,13 +1,19 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import FolderList from '../FolderList';
+import '../../css/Navigation.css';
+import { useContentView } from '../../context/ContentViewContext';
+import Home from '../Home';
 
 function Navigation({ isLoaded }){
+  // const [activeNavRoute, setActiveNavRoute] = useState('');
+  const { contentView, setContentView } = useContentView();
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
+
   if (sessionUser) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
@@ -23,12 +29,25 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navigation-bar'>
-    <ul>
-      <li className='navigation-bar-item'>
-        <NavLink exact to="/">Home</NavLink>
+      <div className='navigation-bar-item' >
+        <button onClick={(() => setContentView('home'))}>Home</button>
+      </div>
+      <div className='navigation-bar-item' >
+        <button onClick={(() => setContentView('something'))}>Something</button>
+      </div>
+      <div className='navigation-bar-item'>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+      <div className='navigation-bar-item'>
+        Stand-in Text
+      </div>
+      <div className='navigation-bar-item'>
+      Stand-in Text
+      </div>
+      <div className='navigation-bar-item'>
+      Stand-in Text
+      </div>
+      <FolderList />
     </div>
   );
 }

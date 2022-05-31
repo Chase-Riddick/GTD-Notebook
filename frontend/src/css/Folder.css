@@ -1,0 +1,24 @@
+.folder-note-list {
+    background-color: rgb(245, 245, 245);
+    padding: 0%;
+    margin: 0%;
+}
+
+.folder-note-list-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.list-header-buttons {
+    margin: auto
+}
+
+.create-note-button {
+    background-color: rgb(249, 131, 112);
+    border-radius: 4px;
+}
+
+.list-headers {
+    padding: 0;
+}

@@ -21,8 +21,11 @@ function ProfileButton({ user }) {
 
     document.addEventListener('click', closeMenu);
 
+    console.log("Clicked2")
+
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+
 
   const logout = (e) => {
     e.preventDefault();
