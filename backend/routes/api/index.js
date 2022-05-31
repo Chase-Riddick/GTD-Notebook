@@ -9,9 +9,5 @@ router.use('/users', usersRouter);
 router.use('/folders', foldersRouter);
 router.use('/notes', notesRouter);
 
-//This is a test route.
-// router.post('/test', (req, res) => {
-//   res.json({ requestBody: req.body });
-// });
 
 module.exports = router;

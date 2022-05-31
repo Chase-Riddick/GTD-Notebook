@@ -11,6 +11,7 @@ function Navigation({ isLoaded }){
   // const [activeNavRoute, setActiveNavRoute] = useState('');
   const { contentView, setContentView } = useContentView();
   const sessionUser = useSelector(state => state.session.user);
+  const [showFolderLinks, setShowFolderLinks] = useState(false);
 
   let sessionLinks;
 
@@ -27,27 +28,54 @@ function Navigation({ isLoaded }){
     );
   }
 
+  <span class="material-symbols-outlined">
+folder
+</span>
+
   return (
     <div className='navigation-bar'>
-      <div className='navigation-bar-item' >
-        <button onClick={(() => setContentView('home'))}>Home</button>
-      </div>
-      <div className='navigation-bar-item' >
-        <button onClick={(() => setContentView('something'))}>Something</button>
-      </div>
+
       <div className='navigation-bar-item'>
         {isLoaded && sessionLinks}
       </div>
-      <div className='navigation-bar-item'>
-        Stand-in Text
+
+      <div className='navigation-bar-item' >
+        <div onClick={(() => setContentView('home'))}>
+        <i class="fa-solid fa-house"></i>
+          Home</div>
       </div>
-      <div className='navigation-bar-item'>
-      Stand-in Text
+
+      <div className='navigation-bar-item' >
+        <div onClick={(() => setContentView('home'))}>
+        <span class="material-symbols-outlined">text_snippet</span>
+          Notes</div>
       </div>
-      <div className='navigation-bar-item'>
-      Stand-in Text
+
+      <div className='navigation-bar-item' >
+        <div onClick={(() => {
+          setContentView('foldersList');
+          setShowFolderLinks(!showFolderLinks)
+          })}>
+        <span class="material-symbols-outlined">folder</span>
+          Folders</div>
       </div>
-      <FolderList />
+
+      {showFolderLinks &&
+            <FolderList />}
+
+      <div className='navigation-bar-item' >
+        <div onClick={(() => setContentView('home'))}>
+        <i class="fa-brands fa-github"></i>
+          </div>
+      </div>
+
+      <div className='navigation-bar-item' >
+        <div onClick={(() => setContentView('home'))}>
+        <i class="fa-brands fa-linkedin"></i>
+          </div>
+      </div>
+
+
     </div>
   );
 }

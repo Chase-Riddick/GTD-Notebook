@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 export default function DisplayNote () {
     const dispatch = useDispatch();
-    const { activeNote } = useContentView();
+    const { activeNote, setActiveNote, setNoteView } = useContentView();
     const [ hideEditForm, setHideEditForm ] = useState(true);
     const [ displayNote, setDisplayNote ] = useState(true);
 
@@ -19,9 +19,9 @@ export default function DisplayNote () {
     }
 
     function deleteNote () {
-        console.log("Did this work?")
         let res = dispatch(removeNote(activeNote.id))
-        if (res) console.log("It worked!")
+        setNoteView('');
+        setActiveNote({});
     }
 
     return (

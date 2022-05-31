@@ -4,6 +4,7 @@
 // import { useEffect } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 import Folder from '../Folder';
+import Folders from '../Folders';
 import Home from '../Home';
 
 const Content = () => {
@@ -26,15 +27,18 @@ const Content = () => {
         else return null;
     }
 
+
   return (
-    <div>
+    <>
         {
+
         {
           'folder': <Folder id={id()}/>,
+          'foldersList': <Folders />,
           'home': <Home />
         }[contentType()]
       }
-    </div>
+    </>
   );
 };
 

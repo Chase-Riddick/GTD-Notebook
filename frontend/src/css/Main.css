@@ -1,11 +1,12 @@
 .main-view {
     border: 1px black solid;
-    width: 30%;
-    max-width: 300px;
-    min-width: 250px;
+    width: 80%;
+    max-width: 800px;
+    min-width: 500px;
     background-color: rgb(245, 245, 245);
     padding: 0%;
     margin: 0%;
+    display: flex;
 }
 
 .page-view {
@@ -16,6 +17,7 @@
 .navigation-wrapper {
     width: 20%;
     max-width: 200px;
+    min-width: 150px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

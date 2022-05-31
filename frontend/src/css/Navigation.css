@@ -8,7 +8,19 @@
 
 .navigation-bar-item {
     list-style: none;
-    height: 40px;
+    height: 30px;
     border: black solid 1px;
     margin: 3px;
+   line-height: 30px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+}
+
+.nav-text-content {
+    padding-bottom: 3px;
+}
+
+.profile-dropdown {
+    background-color: white;
+    border: black 1px solid;
 }
