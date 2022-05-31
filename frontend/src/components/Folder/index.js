@@ -10,7 +10,7 @@ import { useContentView } from '../../context/ContentViewContext';
 const Folder = ({id}) => {
     const { contentView, setNoteView, setActiveNote } = useContentView();
     const dispatch = useDispatch();
-    const notes = useSelector(state=>state.noteState.list);
+    const notes = useSelector(state=>Object.values(state.noteState));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     console.log(notes)

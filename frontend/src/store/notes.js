@@ -1,29 +1,26 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'notes/LOAD';
-const ADD = 'notes/ADD';
-const MODIFY = 'notes/MODIFY';
+const ADD_MODIFY = 'notes/ADD_MODIFY';
 
-const load = list => ({
+const load = notes => ({
     type: LOAD,
-    list
+    notes
   });
 
-const add = note => ({
-    type: ADD,
+const add_modify = note => ({
+    type: ADD_MODIFY,
     note
 });
 
-const modify = note => ({
-    type: MODIFY,
-    note
-});
+
 
 export const getNotesByNotebook = (folderId) => async dispatch => {
     const response = await fetch(`/api/folders/${folderId}`);
     if (response.ok) {
-        const list = await response.json();
-        dispatch(load(list));
+        const notes = await response.json();
+        console.log("Line 22", notes)
+        dispatch(load(notes));
     }
 };
 
@@ -34,14 +31,14 @@ export const addNoteToNotebook = (payload) => async dispatch => {
     });
     if (response.ok) {
         const note = await response.json();
-        dispatch(add(note));
+        dispatch(add_modify(note));
         return note;
     }
 };
 
-export const editNote = (payload) => async dispatch => {
+export const editNote = (payload, id) => async dispatch => {
     console.log("***THIS IS BEFORE FETCH***")
-    const response = await csrfFetch(`/api/notes/${payload.id}`, {
+    const response = await csrfFetch(`/api/notes/${id}`, {
         method: 'PUT',
         body: JSON.stringify(payload)
     });
@@ -49,7 +46,7 @@ export const editNote = (payload) => async dispatch => {
     if (response.ok) {
         console.log("***THIS IS RESPONSE IS OKAY***")
         const note = await response.json();
-        dispatch(modify(note));
+        dispatch(add_modify(note));
         return note;
     }
 };
@@ -64,27 +61,21 @@ export const editNote = (payload) => async dispatch => {
 //     }
 // };
 
-const initialState = { list: [] };
+const initialState = {};
 
 const noteReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case LOAD:
-            return { ...state, list: [...action.list.notes] };
-        case ADD:
-            return { ...state, list: [...state.list, action.note] };
-        case MODIFY:
-            return { ...state, list: [...state.list, action.note] };
-
-            // if (!state[action.note.id]) {
-            //     const newState = {
-            //       ...state,
-            //       [action.note.id]: action.note
-            //     };
-            //     const noteList = newState.list.map(id => newState[id]);
-            //     noteList.push(action.note);
-            //     newState.list = sortList(noteList);
-            //     return newState;
-            //   }
+            newState = {};
+			action.notes.forEach((note) => {
+				newState[note.id] = note;
+			});
+			return newState;
+        case ADD_MODIFY:
+            newState = { ...state };
+            newState[action.note.id] = action.note;
+            return newState
         default:
             return state;
     }

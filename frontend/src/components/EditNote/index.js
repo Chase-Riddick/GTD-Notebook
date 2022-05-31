@@ -27,14 +27,14 @@ export default function EditNote ({note}) {
         const id = note.id;
 
         const payload = {
-            id,
             userId,
             folderId,
             title,
             content,
         }
 
-        let editedNote = dispatch(editNote(payload));
+        console.log("payload", payload)
+        let editedNote = dispatch(editNote(payload, id));
         if (editedNote) {
             reset();
           }
