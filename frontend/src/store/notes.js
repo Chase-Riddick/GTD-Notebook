@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 const LOAD = 'notes/LOAD';
 const ADD_MODIFY = 'notes/ADD_MODIFY';
+const REMOVE = 'notes/REMOVE';
 
 const load = notes => ({
     type: LOAD,
@@ -13,6 +14,21 @@ const add_modify = note => ({
     note
 });
 
+const remove = noteId => ({
+    type: REMOVE,
+    noteId,
+  });
+
+export const removeNote = (noteId) => async dispatch => {
+    console.log("Before fetch")
+    const response = await csrfFetch(`/api/notes/${noteId}`, {
+        method: 'DELETE'
+    });
+    console.log("After fetch")
+    if (response.ok) {
+        dispatch(remove(noteId));
+    }
+};
 
 
 export const getNotesByNotebook = (folderId) => async dispatch => {
@@ -37,14 +53,11 @@ export const addNoteToNotebook = (payload) => async dispatch => {
 };
 
 export const editNote = (payload, id) => async dispatch => {
-    console.log("***THIS IS BEFORE FETCH***")
     const response = await csrfFetch(`/api/notes/${id}`, {
         method: 'PUT',
         body: JSON.stringify(payload)
     });
-    console.log("***THIS IS AFTER FETCH***")
     if (response.ok) {
-        console.log("***THIS IS RESPONSE IS OKAY***")
         const note = await response.json();
         dispatch(add_modify(note));
         return note;
@@ -75,6 +88,10 @@ const noteReducer = (state = initialState, action) => {
         case ADD_MODIFY:
             newState = { ...state };
             newState[action.note.id] = action.note;
+            return newState
+        case REMOVE:
+            newState = { ...state };
+            delete newState[action.noteId]
             return newState
         default:
             return state;

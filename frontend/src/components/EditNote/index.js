@@ -5,7 +5,7 @@ import { useContentView } from '../../context/ContentViewContext';
 import { editNote } from '../../store/notes';
 // import Thunk Action Creators
 
-export default function EditNote ({note}) {
+export default function EditNote ({note, setHideEditForm, setDisplayNote}) {
     const { folderView } =  useContentView();
     const dispatch = useDispatch();
 
@@ -37,6 +37,8 @@ export default function EditNote ({note}) {
         let editedNote = dispatch(editNote(payload, id));
         if (editedNote) {
             reset();
+            setHideEditForm(true)
+            setDisplayNote(true)
           }
       };
 
