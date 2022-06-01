@@ -5,8 +5,8 @@ body {
 
 .main-view {
     border: 1px black solid;
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
+    /* max-width: 800px; */
     min-width: 500px;
     background-color: rgb(245, 245, 245);
     padding: 0%;
