@@ -1,14 +1,67 @@
 .navigation-bar {
-    /* width: 100%; */
+    max-width: 120px;
+    min-width: 80px;
+    width: 15%;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     border: black solid 1px;
+    background-color: rgb(24, 23, 23);
+    color: white;
+    font-size: 16px;
 }
 
 .navigation-bar-item {
+    display: flex;
     list-style: none;
-    height: 40px;
-    border: black solid 1px;
+    height: 30px;
     margin: 3px;
+   line-height: 30px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+   margin-left: 8px;
+}
+
+
+.navigation-bar-item:hover {
+    background-color: rgba(140, 128, 128, 0.393);
+}
+
+.nav-text-content {
+    padding-bottom: 3px;
+}
+
+.profile-dropdown {
+    background-color: white;
+    border: black 1px solid;
+}
+
+.fa-solid, .fa-brands {
+    color: rgb(243, 235, 235);
+    margin-right: 8px;
+    width: 14px;
+}
+
+.drop-down-items {
+    padding-left: 3px;
+    margin-left: 8px;
+}
+
+.drop-down-item {
+    font-weight: 10px;
+}
+
+
+
+.top-bar {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    background-image: url(../images/logo-small.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }

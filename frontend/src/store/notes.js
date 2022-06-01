@@ -4,6 +4,7 @@ const LOAD = 'notes/LOAD';
 const ADD_MODIFY = 'notes/ADD_MODIFY';
 const REMOVE = 'notes/REMOVE';
 
+
 const load = notes => ({
     type: LOAD,
     notes
@@ -18,6 +19,7 @@ const remove = noteId => ({
     type: REMOVE,
     noteId,
   });
+
 
 export const removeNote = (noteId) => async dispatch => {
     console.log("Before fetch")

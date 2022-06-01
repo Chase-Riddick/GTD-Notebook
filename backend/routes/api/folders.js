@@ -14,5 +14,39 @@ router.get('/:id/:title', asyncHandler(async function(req, res) {
     return res.json(notes)
 }))
 
+router.put(
+    '/:id',
+    asyncHandler(async function (req, res) {
+      const {
+        title
+      } = req.body;
+      let folder = await Folder.findByPk(req.params.id);
+      folder.title = title;
+      await folder.save()
+      return res.json(folder);
+    })
+  );
+
+  router.delete('/:id',
+  asyncHandler(async function (req, res) {
+    const folder = await Folder.findByPk(req.params.id);
+    if (folder) {
+      await folder.destroy();
+      return res.json({message: 'Success'});
+  } else {
+      res.json({message: 'Fail'})
+  }
+  })
+);
+
+router.post(
+    '/',
+    asyncHandler(async function (req, res) {
+      const folder = await Folder.create(req.body);
+      return res.json(folder);
+    })
+  );
+
+
 
 module.exports = router;

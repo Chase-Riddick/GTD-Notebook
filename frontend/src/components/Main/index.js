@@ -6,7 +6,8 @@ import Navigation from '../Navigation';
 import Folder from '../Folder';
 import Content from '../Content';
 import ContentViewProvider from '../../context/ContentViewContext';
-import SideView from '../SideView';
+import { ModalProvider } from '../../context/Modal';
+
 
 import '../../css/Main.css';
 
@@ -25,15 +26,14 @@ export default function Main ({isLoaded}) {
 
     return (
         <div className='page-view'>
+            <ModalProvider>
             <ContentViewProvider>
                 <Navigation isLoaded={isLoaded} className="navigation-container"/>
                 <main className='main-view'>
                 <Content />
                 </main>
-                <div className='right-bar'>
-                    <SideView />
-                </div>
             </ContentViewProvider>
+            </ModalProvider>
         </div>
     )
 }

@@ -13,17 +13,17 @@ export default function ContentViewProvider(props) {
   // let letNoteViewCopy = noteView;
 
   useEffect(() => {
-    if (contentViewCopy && contentViewCopy.includes('folder')) setFolderView(contentViewCopy.split('-')[1]);
+
+    if (contentViewCopy && contentViewCopy.split('-')[0] === 'folder') setFolderView(contentViewCopy[1]);
     else setFolderView("")
   }, [contentView])
 
   useEffect(() => {
+    console.log(contentView);
     setNoteView("")
   }, [contentView])
 
-  useEffect(() => {
-    console.log(noteView)
-  }, [noteView])
+
 
   return (
     <ContentViewContext.Provider

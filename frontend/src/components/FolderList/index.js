@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import '../../css/Navigation.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getFolders } from '../../store/folders';
 import { useEffect } from 'react';
@@ -8,7 +9,7 @@ const FolderList = () => {
   const { setContentView } = useContentView();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const folders = useSelector(state=>state.folderState.list);
+  const folders = useSelector(state=>Object.values(state.folderState));
 
   const userId = sessionUser.id;
 
@@ -17,12 +18,10 @@ const FolderList = () => {
   }, [dispatch]);
 
   return (
-    <div>
-        <p>
-            Hello World!
-        </p>
+    <div className='drop-down-items'>
       {folders.map(({ id, title }) => (
-        <li key={`navigation-folder-item-${id}`}><button onClick={(() => setContentView(`folder-${id}`))}>{title}</button></li>
+
+        <li onClick={(() => setContentView(`folder-${id}`))} className='navigation-bar-item drop-down-item' key={`navigation-folder-item-${id}`}>{title}</li>
       ))}
     </div>
   );
