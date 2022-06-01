@@ -14,9 +14,6 @@ const Folder = ({id}) => {
     const notes = useSelector(state=>Object.values(state.noteState));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
-    console.log(notes)
-    console.log("*******************************")
-    console.log(id)
 
     useEffect(() => {
         dispatch(getNotesByNotebook(id));

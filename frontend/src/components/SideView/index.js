@@ -12,7 +12,8 @@ export default function SideView () {
              <ComposeNote />
             }
             {noteView && noteView === 'note' &&
-             <DisplayNote />
+            <ComposeNote />
+            //  <DisplayNote />
             }
         </>
     )

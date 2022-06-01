@@ -2,25 +2,40 @@ import '../../css/ComposeNote.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useContentView } from '../../context/ContentViewContext';
-import { addNoteToNotebook } from '../../store/notes';
+import { addNoteToNotebook, editNote } from '../../store/notes';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 // import Thunk Action Creators
 
 export default function ComposeNote() {
+    const { activeNote} = useContentView();
+    const sessionUser = useSelector(state => state.session.user);
     const { folderView } =  useContentView();
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const sessionUser = useSelector(state => state.session.user);
+
+    const [title, setTitle] = useState();
+    const [content, setContent] = useState({ value: null });
+    const [userId, setUserId] = useState(sessionUser.id);
+    const [isNew, setIsNew] = useState(true);
 
 
 
-    // const updateTitle = (e) => setTitle(e.target.value);
-    // const updateContent = (e) => setContent(e.target.value);
+    const handleChange = value => {
+        setContent({ value });
+    }
+
+    useEffect(() => {
+        if (activeNote) {
+            setTitle(activeNote.title);
+            setContent(activeNote.content);
+            setIsNew(false);
+        }
+    },[])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const userId = sessionUser.id;
         const folderId = Number(folderView);
 
         const payload = {
@@ -30,21 +45,28 @@ export default function ComposeNote() {
             content,
         }
 
-        let createdNote = dispatch(addNoteToNotebook(payload));
-        if (createdNote) {
-            reset();
-          }
+        let createdNote;
+
+        if (isNew) {
+            createdNote = dispatch(addNoteToNotebook(payload));
+        } else {
+            createdNote = dispatch(editNote(payload, activeNote.id));
+        }
+
+        // if (createdNote) {
+        //     reset();
+        //   }
       };
 
-      const reset = () => {
-        setTitle('');
-        setContent('');
-      };
+    //   const reset = () => {
+    //     setTitle('');
+    //     setContent('');
+    //   };
 
-      const handleCancelClick = (e) => {
-        e.preventDefault();
-        reset();
-      };
+    //   const handleCancelClick = (e) => {
+    //     e.preventDefault();
+    //     reset();
+    //   };
 
 
     return (
@@ -53,28 +75,26 @@ export default function ComposeNote() {
             <h2>Compose Note for {folderView}</h2>
 
             <form onSubmit={handleSubmit} className="compose-note-form" hidden={!folderView}>
-
-                <input
+               <input
                     type='text'
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     placeholder='Title'
                     name='title'
                     className='cell'
-                 />
-
-                <textarea
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    name='body'
-                    placeholder='Add your entry'
-                    rows='10'
-                    cols='40'
-                    className='cell'
-                ></textarea>
+                    />
+                <ReactQuill
+                    theme="snow"
+                    value={content.value}
+                    onChange={handleChange}
+                    placeholder={"What's on you mind?..."}
+                    className="text-editor"
+                    // modules={modules}
+                    // formats={formats}
+                />
 
                 <button type='submit'>Submit</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <button type="button">Cancel</button>
 
             </form>
 

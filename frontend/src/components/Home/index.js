@@ -1,3 +1,5 @@
+import TestTextEditor from "../TestTextEditor";
+
 const Home = () => {
 
   return (
@@ -5,6 +7,7 @@ const Home = () => {
         <p>
             Hello World! Welcome to Home.
         </p>
+        <TestTextEditor/>
     </div>
   );
 };

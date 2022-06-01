@@ -33,7 +33,6 @@ export default function EditNote ({note, setHideEditForm, setDisplayNote}) {
             content,
         }
 
-        console.log("payload", payload)
         let editedNote = dispatch(editNote(payload, id));
         if (editedNote) {
             reset();

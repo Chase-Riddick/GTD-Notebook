@@ -28,7 +28,7 @@ function Navigation({ isLoaded }){
     );
   }
 
-  <span class="material-symbols-outlined">
+  <span className="material-symbols-outlined">
 folder
 </span>
 
@@ -43,13 +43,13 @@ folder
 
       <div className='navigation-bar-item' >
         <div onClick={(() => setContentView('home'))}>
-        <i class="fa-solid fa-house"></i>
+        <i className="fa-solid fa-house"></i>
         <span className='link-title'>Home</span></div>
       </div>
 
       <div className='navigation-bar-item' >
         <div onClick={(() => setContentView('home'))}>
-        <i class="fa-solid fa-file"></i>
+        <i className="fa-solid fa-file"></i>
         <span className='link-title'>Notes</span></div>
       </div>
 
@@ -58,7 +58,7 @@ folder
           setContentView('foldersList');
           setShowFolderLinks(!showFolderLinks)
           })}>
-        <i class="fa-solid fa-book"></i>
+        <i className="fa-solid fa-book"></i>
           <span className='link-title'>Folders</span></div>
       </div>
 
@@ -70,7 +70,7 @@ folder
 
         <div onClick={(() => setContentView('home'))}>
         <a href="https://github.com/Chase-Riddick/GTD-Notebook" target="_blank">
-        <i class="fa-brands fa-github fa-lg"></i>
+        <i className="fa-brands fa-github fa-lg"></i>
         </a>
           </div>
       </div>
@@ -78,7 +78,7 @@ folder
       <div className='navigation-bar-item' >
       <a href="https://www.linkedin.com/in/chase-riddick-a14596237/" target="_blank">
         <div onClick={(() => setContentView('home'))}>
-        <i class="fa-brands fa-linkedin fa-lg"></i>
+        <i className="fa-brands fa-linkedin fa-lg"></i>
           </div>
         </a>
       </div>

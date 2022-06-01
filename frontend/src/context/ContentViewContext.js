@@ -19,7 +19,6 @@ export default function ContentViewProvider(props) {
   }, [contentView])
 
   useEffect(() => {
-    console.log(contentView);
     setNoteView("")
   }, [contentView])
 

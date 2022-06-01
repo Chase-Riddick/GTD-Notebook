@@ -22,11 +22,10 @@ const remove = noteId => ({
 
 
 export const removeNote = (noteId) => async dispatch => {
-    console.log("Before fetch")
     const response = await csrfFetch(`/api/notes/${noteId}`, {
         method: 'DELETE'
     });
-    console.log("After fetch")
+
     if (response.ok) {
         dispatch(remove(noteId));
     }
@@ -66,15 +65,6 @@ export const editNote = (payload, id) => async dispatch => {
     }
 };
 
-// export const getNotesByNotebook = (userId, folderTitle) => async dispatch => {
-//     console.log("getNotes entered")
-//     const response = await fetch(`/api/folders/${userId}/${folderTitle}`);
-//     console.log("getNotes response received")
-//     if (response.ok) {
-//         const list = await response.json();
-//         dispatch(load(list));
-//     }
-// };
 
 const initialState = {};
 

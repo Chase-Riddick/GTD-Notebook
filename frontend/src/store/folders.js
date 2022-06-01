@@ -40,7 +40,6 @@ export const addFolder = (payload) => async dispatch => {
 };
 
 export const modifyFolder = (payload, id) => async dispatch => {
-  console.log("***TAC B F HIT***")
   const response = await csrfFetch(`/api/folders/${id}`, {
       method: 'PUT',
       body: JSON.stringify(payload)
@@ -48,7 +47,6 @@ export const modifyFolder = (payload, id) => async dispatch => {
 
   if (response.ok) {
       const folder = await response.json();
-      console.log("***TAC A F HIT***", folder)
       dispatch(add_modify(folder));
       return folder;
   }
@@ -91,7 +89,6 @@ const folderReducer = (state = initialState, action) => {
             });
             return newState;
         case ADD_MODIFY:
-          console.log("***ReducerHIT***", action.folder)
             newState = { ...state };
             newState[action.folder.id] = action.folder;
             return newState
