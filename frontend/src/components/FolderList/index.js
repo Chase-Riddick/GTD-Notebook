@@ -9,7 +9,7 @@ const FolderList = () => {
   const { setContentView } = useContentView();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const folders = useSelector(state=>state.folderState.list);
+  const folders = useSelector(state=>Object.values(state.folderState));
 
   const userId = sessionUser.id;
 
@@ -18,10 +18,10 @@ const FolderList = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className='drop-down-items'>
       {folders.map(({ id, title }) => (
 
-        <li onClick={(() => setContentView(`folder-${id}`))} className='navigation-bar-item' key={`navigation-folder-item-${id}`}>{title}</li>
+        <li onClick={(() => setContentView(`folder-${id}`))} className='navigation-bar-item drop-down-item' key={`navigation-folder-item-${id}`}>{title}</li>
       ))}
     </div>
   );

@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const { Note } = require('./note');
 
 module.exports = (sequelize, DataTypes) => {
   class Folder extends Model {
@@ -7,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       Folder.belongsTo(models.User, {
         foreignKey: "userId",
         as: "user",
+        onDelete: 'CASCADE',
       });
       Folder.hasMany(models.Note, {
         foreignKey: "folderId",
@@ -39,13 +41,14 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Folder.foldersByUserId = async function (userId) {
-    return await Folder.findAll({
-      where: {
-        userId,
-      },
-    })
-  };
+  // Folder.foldersByUserId = async function (userId) {
+  //   return await Folder.findAll({
+  //     where: {
+  //       userId,
+  //     },
+  //     include: [Note],
+  //   })
+  // };
 
   return Folder;
 };

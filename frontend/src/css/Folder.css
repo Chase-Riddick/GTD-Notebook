@@ -23,3 +23,50 @@
 .list-headers {
     padding: 0;
 }
+
+.folder-card {
+
+}
+
+.folders-table {
+    margin: auto;
+
+}
+
+.note-title {
+    text-decoration: none;
+    list-style: none;
+    border: black 1px solid;
+}
+
+.folder-card-note-list {
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.folder-card-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.folder-card-title {
+    font-weight: 700;
+}
+
+.folders-page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .material-symbols-outlined {
+    margin
+} */
+
+/* .icon {
+    margin-top: 22px;
+} */
+
+.add-button {
+    margin-top: 50%;
+}

@@ -1,17 +1,75 @@
-const LOAD = 'folders/LOAD';
+import { csrfFetch } from './csrf';
 
-const load = list => ({
+const LOAD = 'folders/LOAD';
+const ADD_MODIFY = 'folders/ADD_MODIFY';
+const REMOVE = 'folders/REMOVE';
+
+const load = folders => ({
     type: LOAD,
-    list
+    folders
+  });
+
+const add_modify = folder => ({
+    type: ADD_MODIFY,
+    folder
+});
+
+const remove = folderId => ({
+    type: REMOVE,
+    folderId,
   });
 
 export const getFolders = (userId) => async dispatch => {
 const response = await fetch(`/api/users/${userId}/folders`);
 if (response.ok) {
-    const list = await response.json();
-    dispatch(load(list));
+    const folders = await response.json();
+    dispatch(load(folders));
 }
 };
+
+export const addFolder = (payload) => async dispatch => {
+  const response = await csrfFetch(`/api/folders/`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+  });
+  if (response.ok) {
+      const folder = await response.json();
+      dispatch(add_modify(folder));
+      return folder;
+  }
+};
+
+export const modifyFolder = (payload, id) => async dispatch => {
+  console.log("***TAC B F HIT***")
+  const response = await csrfFetch(`/api/folders/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(payload)
+  });
+
+  if (response.ok) {
+      const folder = await response.json();
+      console.log("***TAC A F HIT***", folder)
+      dispatch(add_modify(folder));
+      return folder;
+  }
+};
+
+export const removeFolder = (folderId) => async dispatch => {
+  const response = await csrfFetch(`/api/folders/${folderId}`, {
+      method: 'DELETE'
+  });
+  if (response.ok) {
+      dispatch(remove(folderId));
+  }
+};
+
+// export const getFoldersAndNotes = (userId) => async dispatch => {
+//   const response = await fetch(`/api/users/${userId}/folders/contents`);
+//   if (response.ok) {
+//       const folders = await response.json();
+//       dispatch(load(folders));
+//   }
+//   };
 
 
 
@@ -21,13 +79,26 @@ if (response.ok) {
 // }).map((folder) => folder.id);
 // };
 
-const initialState = { list: [] };
+const initialState = {};
 
 const folderReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case LOAD:
-            return { ...state, list: [...action.list.folders] };
-
+            newState = {};
+            action.folders.forEach((folder) => {
+              newState[folder.id] = folder;
+            });
+            return newState;
+        case ADD_MODIFY:
+          console.log("***ReducerHIT***", action.folder)
+            newState = { ...state };
+            newState[action.folder.id] = action.folder;
+            return newState
+        case REMOVE:
+            newState = { ...state };
+            delete newState[action.folderId]
+            return newState
         default:
             return state;
     }
