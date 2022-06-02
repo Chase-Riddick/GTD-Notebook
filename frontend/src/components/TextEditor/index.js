@@ -1,48 +1,21 @@
-import React, { useState, useCallback } from "react"
-import { Editor, EditorState, RichUtils } from "draft-js"
-import '../../css/TextEditor.css';
+import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
-export default function TextEditor() {
-    const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
-    const handleKeyCommand = useCallback((command, editorState) => {
-      const newState = RichUtils.handleKeyCommand(editorState, command)
-      if (newState) {
-        setEditorState(newState)
-        return "handled"
-      }
-      return "not-handled"
-    })
-
-    const onBoldClick = useCallback(() => {
-      setEditorState(RichUtils.toggleInlineStyle(editorState, "BOLD"))
-    })
-
-    const onUnderlineClick = useCallback(() => {
-        setEditorState(RichUtils.toggleInlineStyle(editorState, "UNDERLINE"))
-      })
-
-    const onItalicClick = useCallback(() => {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, "ITALIC"))
-    })
-
-    const onCodeClick = useCallback(() => {
-        setEditorState(RichUtils.toggleInlineStyle(editorState, "CODE"))
-        })
-
+export default function TextEditor ({content, setContent}) {
+  const handleChange = value => {
+    setContent(value );
+}
     return (
-      <div className="root">
-            <button onClick={onUnderlineClick}>U</button>
-            <button onClick={onBoldClick}><b>B</b></button>
-            <button onClick={onItalicClick}><em>I</em></button>
-            <button onClick={onCodeClick}>C</button>
-            <Editor
-            className="editor"
-            editorState={editorState}
-            handleKeyCommand={handleKeyCommand}
-            placeholder="Enter some text..."
-            onChange={setEditorState}
-            />
-      </div>
-    )
-  }
+      <ReactQuill
+                    theme="snow"
+                    value={content}
+                    onChange={handleChange}
+                    placeholder={"What's on you mind?..."}
+                    className="text-editor"
+                    // modules={modules}
+                    // formats={formats}
+                />
+    );
+  };

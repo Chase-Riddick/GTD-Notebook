@@ -8,20 +8,26 @@ export default function ContentViewProvider(props) {
   const [folderView, setFolderView] = useState('');
   const [noteView, setNoteView] = useState('');
   const [activeNote, setActiveNote] = useState({});
+  const [activeFolderId, setActiveFolderId] = useState();
 
-  let contentViewCopy = contentView;
+
   // let letNoteViewCopy = noteView;
 
   useEffect(() => {
-
-    if (contentViewCopy && contentViewCopy.split('-')[0] === 'folder') setFolderView(contentViewCopy[1]);
-    else setFolderView("")
+    let contentViewCopy = contentView;
+    if (contentViewCopy && contentViewCopy.includes('folder-')) {
+      let fragment = contentViewCopy.split('-');
+      let folderId = fragment [1];
+      setFolderView(folderId );
+      console.log(contentViewCopy);
+      console.log(">>>>>>>>", folderId);
+      setActiveFolderId(folderId);
+    } else setFolderView("")
   }, [contentView])
 
   useEffect(() => {
     setNoteView("")
   }, [contentView])
-
 
 
   return (
@@ -34,7 +40,8 @@ export default function ContentViewProvider(props) {
         noteView,
         setNoteView,
         activeNote,
-        setActiveNote
+        setActiveNote,
+        activeFolderId,
       }}
     >
       {props.children}
