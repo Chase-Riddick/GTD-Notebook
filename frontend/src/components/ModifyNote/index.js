@@ -12,6 +12,7 @@ import "react-quill/dist/quill.snow.css";
 export default function ModifyNote() {
     const dispatch = useDispatch();
     const { noteView, activeNote, folderView, contentView, activeFolderId } = useContentView();
+    console.log('noteView15', noteView);
     const sessionUser = useSelector(state => state.session.user);
     const [title, setTitle] = useState(activeNote? activeNote.title : "");
     const [content, setContent] = useState(activeNote? activeNote.content : "");
@@ -31,6 +32,8 @@ console.log("This changed.")
         const folderId = activeFolderId;
         console.log(">>LINE 32", folderId )
 
+        let noteId = noteView.split('-')[1]
+
         const payload = {
             userId,
             folderId,
@@ -39,7 +42,7 @@ console.log("This changed.")
         }
         console.log(">>LINE45", activeNote);
         let createdNote;
-        createdNote = dispatch(editNote(payload, activeNote.id));
+        createdNote = dispatch(editNote(payload, noteId ));
 
     };
 
