@@ -1,16 +1,14 @@
 import '../../css/Note.css';
 import '../../css/Folder.css';
 
-
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotesByNotebook } from '../../store/notes';
 import { useEffect } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 import SideView from '../SideView';
-import ModifyNote from '../ModifyNote';
+import DisplayNotes from '../DisplayNotes';
 
-const Folder = ({id, title}) => {
+const Folder = ({folder}) => {
     const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
     const dispatch = useDispatch();
     const notes = useSelector(state=>Object.values(state.noteState));
@@ -18,7 +16,7 @@ const Folder = ({id, title}) => {
     const userId = sessionUser.id;
 
     useEffect(() => {
-        dispatch(getNotesByNotebook(id));
+        dispatch(getNotesByNotebook(folder.id));
     }, [dispatch, contentView]);
 
     useEffect(() => {
@@ -32,7 +30,7 @@ const Folder = ({id, title}) => {
         <div className='folder-note-list'>
           <div className='folder-note-list-header'>
             <div className='list-headers'>
-              <h3>{`${title}`}</h3>
+              <h3>{`${folder.title}`}</h3>
             </div>
             <div className='list-header-buttons'>
             <i class="fa-solid fa-plus fa-lg create-note-button"
@@ -44,18 +42,7 @@ const Folder = ({id, title}) => {
             </div>
           </div>
 
-          {notes.map((note) => (
-            <div className='note-card'
-            onClick={(() => {
-              setNoteView(`note-${note.id}`);
-              setActiveNote(note);
-              })}>
-              <div className='note-card-header-div'>
-                <div className='note-card-title-div'>{note.title}</div>
-              </div>
-              <div className='note-card-content-div'>{note.content.replace(/(<([^>]+)>)/gi, "")}</div>
-            </div>
-          ))}
+          <DisplayNotes notes={notes}/>
         </div>
 
         <div className='right-bar'>
@@ -67,3 +54,17 @@ const Folder = ({id, title}) => {
 };
 
 export default Folder;
+
+
+// {notes.map((note) => (
+//   <div className='note-card'
+//   onClick={(() => {
+//     setNoteView(`note-${note.id}`);
+//     setActiveNote(note);
+//     })}>
+//     <div className='note-card-header-div'>
+//       <div className='note-card-title-div'>{note.title}</div>
+//     </div>
+//     <div className='note-card-content-div'>{note.content.replace(/(<([^>]+)>)/gi, "")}</div>
+//   </div>
+// ))}

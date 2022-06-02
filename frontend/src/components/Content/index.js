@@ -32,10 +32,8 @@ const Content = () => {
 
     const getFolder = () => {
       let folderId = getResourceId();
-      console.log("FolderId>>>", folderId);
-      console.log("Folder>>>", folders[folderId]);
-      if (folderId) folder = folders.folderId;
-      // console.log("Folder>>>", folder );
+      if (folderId) folder = folders[folderId];
+      console.log("Folder>>>", folder );
       return folder;
   }
 

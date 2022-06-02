@@ -3,10 +3,11 @@ import { getFolders } from '../../store/folders';
 import { useEffect } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 import '../../css/Folder.css'
+import '../../css/Note.css';
 import ModifyFoldersModal from '../ModifyFoldersModal.js';
 import AddFolderModal from '../AddFolderModal';
 import { removeFolder } from '../../store/folders';
-import TextEditor from '../TextEditor';
+import SideView from '../SideView';
 
 const Folders = () => {
   const { setContentView } = useContentView();
@@ -26,6 +27,7 @@ function deleteFolder (folderId) {
 
 
     return (
+      <>
       <div className='folders-table'>
 
           <div className='folders-page-header'>
@@ -67,6 +69,10 @@ function deleteFolder (folderId) {
 
       </div>
 
+      <div className='right-bar'>
+              <SideView />
+        </div>
+      </>
     );
   };
 

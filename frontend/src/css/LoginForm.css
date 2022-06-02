@@ -12,13 +12,13 @@
   }
 
   .user-login-form {
-      width: 400px;
-      margin: auto;
-      border: black 1px solid;
+      width: 270px;
       padding: 10px;
-      margin-top: 15%;
+      height: 200px;
   }
 
-  .user-login-form > * {
-      margin-bottom: 5px;
-  }
+  .signup-form {
+    width: 270px;
+    padding: 10px;
+    height: 200px;
+}
