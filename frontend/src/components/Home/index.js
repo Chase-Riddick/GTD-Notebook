@@ -1,3 +1,5 @@
+import TextEditor from "../TextEditor";
+
 const Home = () => {
 
   return (

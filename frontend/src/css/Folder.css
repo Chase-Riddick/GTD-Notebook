@@ -24,14 +24,33 @@
     padding: 0;
 }
 
-.folder-card {
+
+.folders-display {
+    margin: auto;
+    width: 80%;
+    max-width: 550px;
+    border: black 1px solid;
+    border-radius: 12px;
+    height: 80vh;
+    padding: 20px;
 
 }
 
 .folders-table {
     margin: auto;
+    width: 80%;
+    max-width: 550px;
+    border: black 1px solid;
+    border-radius: 12px;
+    /* height: 80vh; */
+    padding: 20px;
 
 }
+
+.folders-table > tr {
+    width: 100%;
+}
+
 
 .note-title {
     text-decoration: none;
@@ -48,6 +67,7 @@
 .folder-card-heading {
     display: flex;
     justify-content: space-between;
+    background-color: rgb(245, 196, 168);
 }
 
 .folder-card-title {

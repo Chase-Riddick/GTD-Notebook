@@ -1,0 +1,19 @@
+
+    .root {
+      padding: 20px;
+      width: 600px;
+      background-color: salmon
+    }
+
+    .editor {
+      border: 1px solid #ccc;
+      cursor: text;
+      min-height: 80;
+      min-width: 400;
+      padding: 10;
+      background-color: white;
+    }
+    .button {
+      margin-top: 10px;
+      text-align: center;
+    }

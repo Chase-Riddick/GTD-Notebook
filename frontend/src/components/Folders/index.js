@@ -6,14 +6,14 @@ import '../../css/Folder.css'
 import ModifyFoldersModal from '../ModifyFoldersModal.js';
 import AddFolderModal from '../AddFolderModal';
 import { removeFolder } from '../../store/folders';
+import TextEditor from '../TextEditor';
 
 const Folders = () => {
   const { setContentView } = useContentView();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const folders = useSelector(state=>Object.values(state.folderState));
-  console.log("This is Folders in FE")
-  console.log(folders)
+
   const userId = sessionUser.id;
 
   useEffect(() => {
@@ -36,29 +36,35 @@ function deleteFolder (folderId) {
 
 
           <div>
-            {folders.map((folder) => (
-                <div className='folder-card'>
-                    <div className='folder-card-heading'>
-                    <div className='folder-card-title'>{folder.title}</div>
-                    <div className='folder-card-buttons'>
-                    <ModifyFoldersModal folder={folder}/>
+          <table>
+              {folders.map((folder) => (
+                  <div className='folder-card'>
 
 
-                    <button
-                    onClick={() => deleteFolder(folder.id)}
-                    className='delete-folder-button header-button'
-                    >Delete</button>
-                    </div>
-                    </div>
+                      <div className='folder-card-heading'>
+                      <div className='folder-card-title'>{folder.title}</div>
+                      <div className='folder-card-buttons'>
+                      <ModifyFoldersModal folder={folder}/>
 
-                    <ul className='folder-card-note-list'>
-                        {folder.Notes && folder.Notes.map(({ title, id}) => (
-                        <li className='note-title' key={`note-listed-${id}`}>{title}</li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
+
+                      <button
+                      onClick={() => deleteFolder(folder.id)}
+                      className='delete-folder-button header-button'
+                      >Delete</button>
+                      </div>
+                      </div>
+
+                      <ul className='folder-card-note-list'>
+                          {folder.Notes && folder.Notes.map(({ title, id}) => (
+                          <li className='note-title' key={`note-listed-${id}`}>{title}</li>
+                          ))}
+                      </ul>
+                  </div>
+              ))}
+            </table>
           </div>
+
+
       </div>
 
     );

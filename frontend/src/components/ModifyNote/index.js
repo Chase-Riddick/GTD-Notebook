@@ -3,23 +3,27 @@ import '../../css/ComposeNote.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useContentView } from '../../context/ContentViewContext';
+// import TextEditor from '../TextEditor';
 import { addNoteToNotebook, editNote } from '../../store/notes';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 
-export default function ComposeNote() {
+export default function ModifyNote() {
     const dispatch = useDispatch();
-    const { activeFolderId, folderView } = useContentView();
+    const { noteView, activeNote, folderView, contentView, activeFolderId } = useContentView();
+    console.log('noteView15', noteView);
     const sessionUser = useSelector(state => state.session.user);
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [title, setTitle] = useState(activeNote? activeNote.title : "");
+    const [content, setContent] = useState(activeNote? activeNote.content : "");
     const [userId, setUserId] = useState(sessionUser.id);
-    // useEffect(() => {
-    //     setTitle(activeNote?.title);
-    //     setContent(activeNote?.content);
-    //     setUserId(sessionUser.id);
-    // }, [ contentView, noteView, folderView ]);
+
+console.log("This changed.")
+    useEffect(() => {
+        setTitle(activeNote?.title);
+        setContent(activeNote?.content);
+        setUserId(sessionUser.id);
+    }, [ contentView, noteView, folderView ]);
 
 
     const handleSubmit = (e) => {
@@ -28,19 +32,22 @@ export default function ComposeNote() {
         const folderId = activeFolderId;
         console.log(">>LINE 32", folderId )
 
+        let noteId = noteView.split('-')[1]
+
         const payload = {
             userId,
             folderId,
             title,
             content,
         }
-
+        console.log(">>LINE45", activeNote);
         let createdNote;
-        createdNote = dispatch(addNoteToNotebook(payload));
+        createdNote = dispatch(editNote(payload, noteId ));
+
     };
 
     const handleChange = value => {
-        setContent(value);
+        setContent(value );
     }
 
     return (
@@ -66,7 +73,7 @@ export default function ComposeNote() {
                     // modules={modules}
                     // formats={formats}
                 />
-                <button type='submit'>Submit</button>
+                <button type='submit' onClick={handleSubmit}>Submit</button>
                 <button type="button">Cancel</button>
 
             </form>

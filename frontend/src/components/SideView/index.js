@@ -1,19 +1,27 @@
 import '../../css/SideView.css'
-import ComposeNote from '../ComposeNote';
-import DisplayNote from '../DisplayNote';
+import '../../css/ComposeNote.css'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useContentView } from '../../context/ContentViewContext';
+import ModifyNote from '../ModifyNote';
+import { addNoteToNotebook, editNote } from '../../store/notes';
+import ComposeNote from '../ComposeNote';
+
 
 export default function SideView () {
-    const { noteView } = useContentView();
+    const { noteView, activeNote } = useContentView();
+    console.log(activeNote);
+    let noteMode = noteView;
+    if (noteView.includes('note')) noteMode = "note";
 
     return (
-        <>
-            {noteView && noteView === 'create' &&
-             <ComposeNote />
+        <div className="note-view">
+            {
+                {
+                'note': < ModifyNote />,
+                'create': <ComposeNote  />,
+                }[noteMode]
             }
-            {noteView && noteView === 'note' &&
-             <DisplayNote />
-            }
-        </>
+        </div>
     )
 };

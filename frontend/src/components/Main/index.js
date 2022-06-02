@@ -7,9 +7,8 @@ import Folder from '../Folder';
 import Content from '../Content';
 import ContentViewProvider from '../../context/ContentViewContext';
 import { ModalProvider } from '../../context/Modal';
-
-
 import '../../css/Main.css';
+
 
 
 export default function Main ({isLoaded}) {
