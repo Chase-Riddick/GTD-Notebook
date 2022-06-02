@@ -54,7 +54,7 @@ const Folder = ({id}) => {
               <div className='note-card-header-div'>
                 <div className='note-card-title-div'>{note.title}</div>
               </div>
-              <div className='note-card-content-div'>{note.content}</div>
+              <div className='note-card-content-div'>{note.content.replace(/(<([^>]+)>)/gi, "")}</div>
             </div>
           ))}
         </div>
