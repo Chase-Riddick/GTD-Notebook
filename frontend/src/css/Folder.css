@@ -1,8 +1,10 @@
 .folder-note-list {
-    width: 200px;
+    width: 300px;
     background-color: rgb(245, 245, 245);
     padding: 0%;
     margin: 0%;
+    height: 100%;
+    overflow-y:auto;
 }
 
 .folder-note-list-header {
@@ -16,8 +18,8 @@
 }
 
 .create-note-button {
-    background-color: rgb(249, 131, 112);
     border-radius: 4px;
+    color: rgb(229, 68, 68);
 }
 
 .list-headers {
@@ -77,6 +79,11 @@
 .folders-page-header {
     display: flex;
     justify-content: space-between;
+}
+
+.note-card {
+    max-height: 100px;
+    overflow-y:hidden;
 }
 
 /* .material-symbols-outlined {

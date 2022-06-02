@@ -10,7 +10,7 @@ import { useContentView } from '../../context/ContentViewContext';
 import SideView from '../SideView';
 import ModifyNote from '../ModifyNote';
 
-const Folder = ({id}) => {
+const Folder = ({id, title}) => {
     const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
     const dispatch = useDispatch();
     const notes = useSelector(state=>Object.values(state.noteState));
@@ -32,16 +32,15 @@ const Folder = ({id}) => {
         <div className='folder-note-list'>
           <div className='folder-note-list-header'>
             <div className='list-headers'>
-              <h3>{`Folder ${id} Notes`}</h3>
+              <h3>{`${title}`}</h3>
             </div>
             <div className='list-header-buttons'>
-              <button
-              className='create-note-button'
-              onClick={(() => {
-                setNoteView('create');
-                setActiveNote(null);
-              })}
-              >Create Note</button>
+            <i class="fa-solid fa-plus fa-lg create-note-button"
+            onClick={(() => {
+              setNoteView('create');
+              setActiveNote(null);
+            })}
+            ></i>
             </div>
           </div>
 

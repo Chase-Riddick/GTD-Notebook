@@ -65,3 +65,10 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.fa-angle-right:active
+{
+        -webkit-transform: rotateZ(90deg);
+        -ms-transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
+}

@@ -12,6 +12,7 @@ function Navigation({ isLoaded }){
   const { contentView, setContentView } = useContentView();
   const sessionUser = useSelector(state => state.session.user);
   const [showFolderLinks, setShowFolderLinks] = useState(false);
+  const [activeFoldersArrow, setActiveFoldersArrow] = useState(false);
 
   let sessionLinks;
 
@@ -55,11 +56,14 @@ folder
 
       <div className='navigation-bar-item' >
         <div onClick={(() => {
-          setContentView('foldersList');
           setShowFolderLinks(!showFolderLinks)
           })}>
+            <i className="fa-solid fa-angle-right"></i>
+            </div>
         <i className="fa-solid fa-book"></i>
-          <span className='link-title'>Folders</span></div>
+          <span
+          onClick={(() => {setContentView('foldersList')})}
+          className='link-title'>Folders</span>
       </div>
 
       {showFolderLinks &&

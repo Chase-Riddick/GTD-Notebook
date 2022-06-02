@@ -17,6 +17,7 @@ export default function ModifyNote() {
     const [title, setTitle] = useState(activeNote? activeNote.title : "");
     const [content, setContent] = useState(activeNote? activeNote.content : "");
     const [userId, setUserId] = useState(sessionUser.id);
+    const [allowEdit, setAllowEdit] = useState(false);
 
 console.log("This changed.")
     useEffect(() => {
@@ -53,6 +54,18 @@ console.log("This changed.")
     return (
         <section className="">
 
+            <div className='note-view-header'>
+                <div className='note-header-buttons'>
+                    <button
+                    className='edit-note-button header-button'
+                    onClick={() => setAllowEdit(!allowEdit)}
+                    >Edit</button>
+                    <button
+                    className='delete-note-button header-button'
+                    >Delete</button>
+                </div>
+            </div>
+
             <h2>Compose Note for {folderView}</h2>
 
             <form onSubmit={handleSubmit} className="compose-note-form" hidden={!folderView}>
@@ -63,6 +76,7 @@ console.log("This changed.")
                     placeholder='Title'
                     name='title'
                     className='cell'
+                    readOnly={!allowEdit}
                     />
                     <ReactQuill
                     theme="snow"
@@ -70,11 +84,17 @@ console.log("This changed.")
                     onChange={handleChange}
                     placeholder={"What's on you mind?..."}
                     className="text-editor"
+                    readOnly={!allowEdit}
                     // modules={modules}
                     // formats={formats}
                 />
-                <button type='submit' onClick={handleSubmit}>Submit</button>
-                <button type="button">Cancel</button>
+                {allowEdit &&
+                    <div>
+                        <button type='submit' onClick={handleSubmit}>Submit</button>
+                        <button type="button">Cancel</button>
+                    </div>
+                }
+
 
             </form>
 
