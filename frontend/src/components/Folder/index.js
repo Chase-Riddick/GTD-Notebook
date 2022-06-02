@@ -1,15 +1,17 @@
 import '../../css/Note.css';
 import '../../css/Folder.css';
 
+
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotesByNotebook } from '../../store/notes';
 import { useEffect } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 import SideView from '../SideView';
+import ModifyNote from '../ModifyNote';
 
 const Folder = ({id}) => {
-    const { contentView, setNoteView, setActiveNote } = useContentView();
+    const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
     const dispatch = useDispatch();
     const notes = useSelector(state=>Object.values(state.noteState));
     const sessionUser = useSelector(state => state.session.user);
@@ -18,6 +20,11 @@ const Folder = ({id}) => {
     useEffect(() => {
         dispatch(getNotesByNotebook(id));
     }, [dispatch, contentView]);
+
+    useEffect(() => {
+      setActiveNote();
+  }, [noteView]);
+
 
   return (
     <>
@@ -30,7 +37,10 @@ const Folder = ({id}) => {
             <div className='list-header-buttons'>
               <button
               className='create-note-button'
-              onClick={(() => setNoteView('create'))}
+              onClick={(() => {
+                setNoteView('create');
+                setActiveNote(null);
+              })}
               >Create Note</button>
             </div>
           </div>
@@ -38,7 +48,7 @@ const Folder = ({id}) => {
           {notes.map((note) => (
             <div className='note-card'
             onClick={(() => {
-              setNoteView('note');
+              setNoteView(`note-${note.id}`);
               setActiveNote(note);
               })}>
               <div className='note-card-header-div'>

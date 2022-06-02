@@ -7,7 +7,6 @@ const Home = () => {
         <p>
             Hello World! Welcome to Home.
         </p>
-        <TextEditor/>
     </div>
   );
 };
