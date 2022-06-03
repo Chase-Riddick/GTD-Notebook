@@ -45,25 +45,44 @@ console.log(">>>>>NOTES", notes, folder.id);
           <div className='folder-note-list-header'>
             <div
             className='list-headers'>
+              <div className='icon-title'>
+              <i className="fa-solid fa-book folder-view-icon"></i>
               <h3>{`${folder.title}`}</h3>
+              </div>
+              <div className='add-icon-div'>
+              <i class="fa-solid fa-circle-plus folder-view-icon"
+              onClick={(() => {
+                setNoteView('create');
+                setActiveNote(null);
+              })}
+              ></i>
+              </div>
             </div>
 
             <div className='list-header-buttons'>
-            <button
+              <div className='open-button-div'>
+            {!isOpen &&
+            <i
+            onClick={() => setIsOpen(!isOpen)}
+            className="fa-solid fa-angle-right folder-view-icon"></i>}
+            {isOpen &&
+            <i
+            onClick={() => setIsOpen(!isOpen)}
+            className="fa-solid fa-angle-down folder-view-icon"></i>}
+            </div>
+            {/* <button
             onClick={() => setIsOpen(!isOpen)}
             className='delete-folder-button header-button'
-            >{isOpen ? "Hide" : "Show"}</button>
+            >{isOpen ? "Hide" : "Show"}
+            </button> */}
+
+            <div className='edit-and-delete'>
             <ModifyFoldersModal folder={folder}/>
             <button
             onClick={() => deleteFolder(folder.id)}
             className='delete-folder-button header-button'
             >Delete</button>
-            <i class="fa-solid fa-plus"
-            onClick={(() => {
-              setNoteView('create');
-              setActiveNote(null);
-            })}
-            ></i>
+            </div>
             </div>
 
           </div>

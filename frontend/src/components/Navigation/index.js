@@ -58,8 +58,10 @@ function Navigation({ isLoaded }){
       <div className='navigation-bar-item' >
         <div onClick={(() => {
           setShowFolderLinks(!showFolderLinks)
-          })}>
-            <i className="fa-solid fa-angle-right"></i>
+          })}>{!showFolderLinks &&
+            <i className="fa-solid fa-angle-right"></i>}
+            {showFolderLinks &&
+            <i className="fa-solid fa-angle-down"></i>}
             </div>
       </div>
 

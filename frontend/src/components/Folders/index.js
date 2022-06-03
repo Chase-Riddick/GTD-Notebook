@@ -47,6 +47,7 @@ function deleteFolder (folderId) {
       <div className='folders-table'>
 
           <div className='folders-page-header'>
+
             <div className='folders-page-title'><h2> Folders </h2></div>
 
             <div className='folders-header-buttons'><AddFolderModal /></div>
