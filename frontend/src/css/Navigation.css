@@ -48,7 +48,25 @@
 
 .fa-solid:hover {
     font-size: 30px;
+    text-shadow: #FC0 1px 0 10px;
+
 }
+
+.fa-brands:hover {
+    font-size: 30px;
+    text-shadow: #FC0 0 0 13px;
+}
+
+.fa-solid:active {
+    font-size: 30px;
+    color: rgb(11, 170, 170);
+    text-shadow: #FC0 1px 0 10px;
+}
+
+.fa-brands:active {
+    font-size: 30px;
+}
+
 
 .fa-brands:hover {
     font-size: 30px;

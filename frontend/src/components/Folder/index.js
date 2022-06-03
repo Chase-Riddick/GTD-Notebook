@@ -11,6 +11,7 @@ import '../../css/Folder.css'
 import '../../css/Note.css';
 import ModifyFoldersModal from '../ModifyFoldersModal.js';
 import { removeFolder } from '../../store/folders';
+import { remove_folder } from '../../store/notes';
 
 const Folder = ({folder}) => {
     const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
@@ -30,8 +31,10 @@ const Folder = ({folder}) => {
   }, [noteView]);
 
 
-  function deleteFolder (folderId) {
-    let res = dispatch(removeFolder(folderId))
+  const deleteFolder = async (folderId) => {
+    console.log(">>>Dispatch Thunk Hit")
+    let res = await dispatch(remove_folder(folderId));
+    if (res) dispatch(removeFolder(folderId));
   }
   console.log(">>>>>NoteView", isOpen);
 console.log(">>>>>NOTES", notes, folder.id);

@@ -4,6 +4,7 @@ const LOAD = 'notes/LOAD';
 const LOADFOLDER = 'notes/LOADFOLDER';
 const ADD_MODIFY = 'notes/ADD_MODIFY';
 const REMOVE = 'notes/REMOVE';
+const REMOVE_FOLDER = 'notes/REMOVE_FOLDER';
 
 
 const load = notes => ({
@@ -24,6 +25,11 @@ const add_modify = note => ({
 const remove = (noteId, folderId) => ({
     type: REMOVE,
     noteId,
+    folderId
+  });
+
+export const remove_folder = (folderId) => ({
+    type: REMOVE_FOLDER,
     folderId
   });
 
@@ -104,6 +110,10 @@ const noteReducer = (state = initialState, action) => {
             folderNotes = {...state[action.folderId]};
             delete folderNotes[action.noteId];
             newState[action.folderId] = folderNotes;
+            return newState
+        case REMOVE_FOLDER:
+            newState = {...state};
+            delete newState[action.folderId];
             return newState
         default:
             return state;
