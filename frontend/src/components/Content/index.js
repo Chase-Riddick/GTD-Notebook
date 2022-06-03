@@ -13,7 +13,7 @@ import '../../css/Main.css'
 const Content = () => {
     const { contentView } = useContentView();
     const folders = useSelector(state=>state.folderState);
-    console.log("Folders>>>", folders )
+    console.log("A>>Folders>>>", folders )
     let folder;
     // const dispatch = useDispatch();
     // const notes = useSelector(state=>state.noteState.list);

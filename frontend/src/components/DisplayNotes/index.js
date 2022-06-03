@@ -2,9 +2,12 @@ import '../../css/Note.css';
 import '../../css/Folder.css';
 
 import { useContentView } from '../../context/ContentViewContext';
+// import { useSelector } from 'react-redux';
 
 export default function DisplayNotes ({notes}) {
+
     const { setNoteView, setActiveNote, setFolderView, setActiveFolderId } = useContentView();
+
 
 
     return (

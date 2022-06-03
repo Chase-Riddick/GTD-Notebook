@@ -8,7 +8,7 @@ export default function ContentViewProvider(props) {
   const [folderView, setFolderView] = useState('');
   const [noteView, setNoteView] = useState('');
   const [activeNote, setActiveNote] = useState({});
-  const [activeFolderId, setActiveFolderId] = useState();
+  const [activeFolderId, setActiveFolderId] = useState(null);
 
 
   // let letNoteViewCopy = noteView;
@@ -42,6 +42,7 @@ export default function ContentViewProvider(props) {
         activeNote,
         setActiveNote,
         activeFolderId,
+        setActiveFolderId
       }}
     >
       {props.children}

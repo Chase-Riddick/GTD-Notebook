@@ -32,7 +32,7 @@ const Folder = ({folder}) => {
     let res = dispatch(removeFolder(folderId))
   }
 
-console.log(">>>>>", noteView);
+console.log(">>>>>NoteView", noteView);
   return (
     <>
 
@@ -66,7 +66,7 @@ console.log(">>>>>", noteView);
           </div>
 
           {isOpen &&
-          <DisplayNotes notes={folder.Notes}/>
+          <DisplayNotes notes={notes}/>
           }
 
           </div>
