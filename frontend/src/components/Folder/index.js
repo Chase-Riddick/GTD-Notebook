@@ -19,6 +19,7 @@ const Folder = ({folder}) => {
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const [isOpen, setIsOpen ] = useState(true);
+    const [isModify, setisModify ] = useState(true);
 
     useEffect(() => {
         dispatch(getNotesByNotebook(folder.id));
@@ -28,11 +29,12 @@ const Folder = ({folder}) => {
       setActiveNote();
   }, [noteView]);
 
+
   function deleteFolder (folderId) {
     let res = dispatch(removeFolder(folderId))
   }
   console.log(">>>>>NoteView", isOpen);
-console.log(">>>>>NoteView", noteView);
+console.log(">>>>>NOTES", notes, folder.id);
   return (
     <>
 
