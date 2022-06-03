@@ -18,7 +18,7 @@ const Folder = ({folder}) => {
     const notes = useSelector(state=>Object.values(state.noteState));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
-    const [isOpen, setIsOpen ] = useState(false);
+    const [isOpen, setIsOpen ] = useState(true);
 
     useEffect(() => {
         dispatch(getNotesByNotebook(folder.id));
