@@ -31,7 +31,7 @@ const Folder = ({folder}) => {
   function deleteFolder (folderId) {
     let res = dispatch(removeFolder(folderId))
   }
-
+  console.log(">>>>>NoteView", isOpen);
 console.log(">>>>>NoteView", noteView);
   return (
     <>
@@ -44,10 +44,10 @@ console.log(">>>>>NoteView", noteView);
               <h3>{`${folder.title}`}</h3>
             </div>
 
-            {/* <button
+            <button
             onClick={() => setIsOpen(!isOpen)}
             className='delete-folder-button header-button'
-            >Show Notes</button> */}
+            >Show Notes</button>
 
             <div className='list-header-buttons'>
             <ModifyFoldersModal folder={folder}/>
