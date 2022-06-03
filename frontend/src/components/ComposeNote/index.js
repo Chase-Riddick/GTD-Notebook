@@ -42,7 +42,7 @@ export default function ComposeNote() {
     const handleChange = value => {
         setContent(value);
     }
-
+    console.log("This is Compose")
     return (
         <section className="">
 

@@ -7,16 +7,18 @@ import { useContentView } from '../../context/ContentViewContext';
 import { addNoteToNotebook, editNote } from '../../store/notes';
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { removeNote } from '../../store/notes';
 
 
 export default function ModifyNote() {
     const dispatch = useDispatch();
-    const { noteView, activeNote, folderView, contentView, activeFolderId } = useContentView();
+    const { noteView, activeNote, folderView, contentView, activeFolderId, setNoteView, setActiveNote } = useContentView();
     console.log('noteView15', noteView);
     const sessionUser = useSelector(state => state.session.user);
     const [title, setTitle] = useState(activeNote? activeNote.title : "");
     const [content, setContent] = useState(activeNote? activeNote.content : "");
     const [userId, setUserId] = useState(sessionUser.id);
+    const [allowEdit, setAllowEdit] = useState(false);
 
 console.log("This changed.")
     useEffect(() => {
@@ -49,9 +51,37 @@ console.log("This changed.")
     const handleChange = value => {
         setContent(value );
     }
+    console.log("This is Modify")
+
+    function deleteNote () {
+        let noteId = noteView.split('-')[1];
+        const folderId = activeFolderId;
+        let res = dispatch(removeNote(noteId, folderId))
+        setNoteView('');
+        setActiveNote({});
+    }
+
+    // const removeNote = () => {
+    //     let noteId = noteView.split('-')[1];
+    //     dispatch(removeNote(noteId));
+    // }
 
     return (
         <section className="">
+
+
+            <div className='note-view-header'>
+                <div className='note-header-buttons'>
+                    <button
+                    className='edit-note-button header-button'
+                    onClick={() => setAllowEdit(!allowEdit)}
+                    >Edit</button>
+                    <button
+                    onClick={() => {deleteNote()}}
+                    className='delete-note-button header-button'
+                    >Delete</button>
+                </div>
+            </div>
 
             <h2>Compose Note for {folderView}</h2>
 
@@ -63,6 +93,7 @@ console.log("This changed.")
                     placeholder='Title'
                     name='title'
                     className='cell'
+                    readOnly={!allowEdit}
                     />
                     <ReactQuill
                     theme="snow"
@@ -70,11 +101,17 @@ console.log("This changed.")
                     onChange={handleChange}
                     placeholder={"What's on you mind?..."}
                     className="text-editor"
+                    readOnly={!allowEdit}
                     // modules={modules}
                     // formats={formats}
                 />
-                <button type='submit' onClick={handleSubmit}>Submit</button>
-                <button type="button">Cancel</button>
+                {allowEdit &&
+                    <div>
+                        <button type='submit' onClick={handleSubmit}>Submit</button>
+                        <button type="button">Cancel</button>
+                    </div>
+                }
+
 
             </form>
 

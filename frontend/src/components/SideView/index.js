@@ -12,6 +12,7 @@ export default function SideView () {
     const { noteView, activeNote } = useContentView();
     console.log(activeNote);
     let noteMode = noteView;
+    console.log()
     if (noteView.includes('note')) noteMode = "note";
 
     return (

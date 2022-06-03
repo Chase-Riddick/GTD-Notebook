@@ -1,18 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getFolders } from '../../store/folders';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 import '../../css/Folder.css'
+import '../../css/Note.css';
 import ModifyFoldersModal from '../ModifyFoldersModal.js';
 import AddFolderModal from '../AddFolderModal';
 import { removeFolder } from '../../store/folders';
-import TextEditor from '../TextEditor';
+import SideView from '../SideView';
+import DisplayNotes from '../DisplayNotes';
+import Folder from '../Folder';
 
 const Folders = () => {
   const { setContentView } = useContentView();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const folders = useSelector(state=>Object.values(state.folderState));
+  const [ closedFolders, setClosedFolders ] = useState()
 
   const userId = sessionUser.id;
 
@@ -23,6 +27,20 @@ const Folders = () => {
 function deleteFolder (folderId) {
   let res = dispatch(removeFolder(folderId))
 }
+
+// const getResourceId = () => {
+//   //Change this to something that allows Foldernumer
+//   let contentViewCopy = contentView;
+//   if (contentViewCopy.includes('-')) return contentViewCopy.split('-')[1];
+//   else return null;
+// }
+
+// const getFolder = () => {
+// let folderId = getResourceId();
+// if (folderId) folder = folders[folderId];
+// console.log("Folder>>>", folder );
+// return folder;
+// }
 
 
     return (
@@ -41,7 +59,7 @@ function deleteFolder (folderId) {
                   <div className='folder-card'>
 
 
-                      <div className='folder-card-heading'>
+                       {/* <div className='folder-card-heading'>
                       <div className='folder-card-title'>{folder.title}</div>
                       <div className='folder-card-buttons'>
                       <ModifyFoldersModal folder={folder}/>
@@ -52,21 +70,14 @@ function deleteFolder (folderId) {
                       className='delete-folder-button header-button'
                       >Delete</button>
                       </div>
-                      </div>
+                      </div> */}
 
-                      <ul className='folder-card-note-list'>
-                          {folder.Notes && folder.Notes.map(({ title, id}) => (
-                          <li className='note-title' key={`note-listed-${id}`}>{title}</li>
-                          ))}
-                      </ul>
+                      <Folder folder={folder}></Folder>
                   </div>
               ))}
             </table>
           </div>
-
-
       </div>
-
     );
   };
 

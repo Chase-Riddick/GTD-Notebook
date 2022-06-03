@@ -24,6 +24,7 @@ export default function Main ({isLoaded}) {
     // </Switch>
 
     return (
+
         <div className='page-view'>
             <ModalProvider>
             <ContentViewProvider>
