@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import Folder from '../Folder';
 import Folders from '../Folders';
 import Home from '../Home';
+import SideView from '../SideView';
+import '../../css/Main.css'
 
 const Content = () => {
     const { contentView } = useContentView();
@@ -40,16 +42,20 @@ const Content = () => {
 
 
   return (
-    <>
+    <div className='content-view'>
+    <div className='left-view'>
         {
-
         {
           'folder': <Folder folder={getFolder()}/>,
           'foldersList': <Folders />,
           'home': <Home />
         }[contentType()]
       }
-    </>
+      </div>
+      <div className='right-view'>
+      <SideView />
+      </div>
+    </div>
   );
 };
 

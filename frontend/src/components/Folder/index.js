@@ -3,10 +3,14 @@ import '../../css/Folder.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotesByNotebook } from '../../store/notes';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useContentView } from '../../context/ContentViewContext';
 import SideView from '../SideView';
 import DisplayNotes from '../DisplayNotes';
+import '../../css/Folder.css'
+import '../../css/Note.css';
+import ModifyFoldersModal from '../ModifyFoldersModal.js';
+import { removeFolder } from '../../store/folders';
 
 const Folder = ({folder}) => {
     const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
@@ -14,6 +18,7 @@ const Folder = ({folder}) => {
     const notes = useSelector(state=>Object.values(state.noteState));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
+    const [isOpen, setIsOpen ] = useState(false);
 
     useEffect(() => {
         dispatch(getNotesByNotebook(folder.id));
@@ -23,33 +28,51 @@ const Folder = ({folder}) => {
       setActiveNote();
   }, [noteView]);
 
+  function deleteFolder (folderId) {
+    let res = dispatch(removeFolder(folderId))
+  }
 
+console.log(">>>>>", noteView);
   return (
     <>
 
         <div className='folder-note-list'>
           <div className='folder-note-list-header'>
-            <div className='list-headers'>
+            <div
+            onClick={() => setIsOpen(!isOpen)}
+            className='list-headers'>
               <h3>{`${folder.title}`}</h3>
             </div>
+
+            {/* <button
+            onClick={() => setIsOpen(!isOpen)}
+            className='delete-folder-button header-button'
+            >Show Notes</button> */}
+
             <div className='list-header-buttons'>
-            <i class="fa-solid fa-plus fa-lg create-note-button"
+            <ModifyFoldersModal folder={folder}/>
+            <button
+            onClick={() => deleteFolder(folder.id)}
+            className='delete-folder-button header-button'
+            >Delete</button>
+            <i class="fa-solid fa-plus"
             onClick={(() => {
               setNoteView('create');
               setActiveNote(null);
             })}
             ></i>
             </div>
+
           </div>
 
-          <DisplayNotes notes={notes}/>
-        </div>
+          {isOpen &&
+          <DisplayNotes notes={folder.Notes}/>
+          }
 
-        <div className='right-bar'>
-              <SideView />
-        </div>
+          </div>
 
     </>
+
   );
 };
 

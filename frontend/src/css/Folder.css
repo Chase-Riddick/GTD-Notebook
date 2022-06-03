@@ -14,7 +14,8 @@
 }
 
 .list-header-buttons {
-    margin: auto
+    margin: auto;
+    border: black 1px solid;
 }
 
 .create-note-button {
@@ -47,6 +48,15 @@
     /* height: 80vh; */
     padding: 20px;
 
+}
+
+.folders-table {
+    overflow-y: scroll;
+    padding: 10px;
+    height: 95%;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
 
 .folders-table > tr {
@@ -96,4 +106,8 @@
 
 .add-button {
     margin-top: 50%;
+}
+
+.fa-solid.fa-plus {
+    color: red;
 }

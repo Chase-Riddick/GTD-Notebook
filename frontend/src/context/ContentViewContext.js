@@ -19,8 +19,8 @@ export default function ContentViewProvider(props) {
       let fragment = contentViewCopy.split('-');
       let folderId = fragment [1];
       setFolderView(folderId );
-      console.log(contentViewCopy);
-      console.log(">>>>>>>>", folderId);
+      // console.log(contentViewCopy);
+      // console.log(">>>>>>>>", folderId);
       setActiveFolderId(folderId);
     } else setFolderView("")
   }, [contentView])

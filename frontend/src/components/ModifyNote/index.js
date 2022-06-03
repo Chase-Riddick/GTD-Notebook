@@ -50,9 +50,11 @@ console.log("This changed.")
     const handleChange = value => {
         setContent(value );
     }
+    console.log("This is Modify")
 
     return (
         <section className="">
+
 
             <div className='note-view-header'>
                 <div className='note-header-buttons'>

@@ -4,7 +4,8 @@ import '../../css/Folder.css';
 import { useContentView } from '../../context/ContentViewContext';
 
 export default function DisplayNotes ({notes}) {
-    const { setNoteView, setActiveNote } = useContentView();
+    const { setNoteView, setActiveNote, setFolderView, setActiveFolderId } = useContentView();
+
 
     return (
         <div>
@@ -13,6 +14,8 @@ export default function DisplayNotes ({notes}) {
                 onClick={(() => {
                 setNoteView(`note-${note.id}`);
                 setActiveNote(note);
+                setFolderView(note.folderId);
+                setActiveFolderId(note.folderId);
                 })}>
                 <div className='note-card-header-div'>
                     <div className='note-card-title-div'>{note.title}</div>
