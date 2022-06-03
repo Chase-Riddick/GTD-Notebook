@@ -26,9 +26,9 @@
 }
 
 
-.navigation-bar-item:hover {
+/* .navigation-bar-item:hover {
     background-color: rgba(140, 128, 128, 0.393);
-}
+} */
 
 .nav-text-content {
     padding-bottom: 3px;
@@ -50,6 +50,10 @@
     font-size: 30px;
 }
 
+.fa-brands:hover {
+    font-size: 30px;
+}
+
 .fa-brands {
     color: rgb(243, 235, 235);
     margin-right: 8px;
@@ -62,10 +66,9 @@
     margin-left: 8px;
 }
 
-.drop-down-item {
-    font-weight: 10px;
+.navigation-bar-item + .drop-down-item {
+    font-size: 12px;
 }
-
 
 
 .top-bar {
@@ -82,6 +85,20 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+li div {
+    position: relative;
+    left: -10px;
+  }
+
+.folderLink {
+    width: 25px;
+    display: inline;
+}
+
+/* .link {
+    font-size: 10px;
+} */
 
 .fa-angle-right:active
 {

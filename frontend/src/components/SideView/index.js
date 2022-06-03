@@ -17,14 +17,12 @@ export default function SideView () {
 
     return (
         <div className="note-view">
-            <h2>This is header.</h2>
             {
                 {
                 'note': < ModifyNote />,
                 'create': <ComposeNote  />,
                 }[noteMode]
             }
-            <h2>This is a footer.</h2>
         </div>
     )
 };

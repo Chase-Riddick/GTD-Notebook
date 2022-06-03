@@ -21,7 +21,7 @@ const FolderList = () => {
     <div className='drop-down-items'>
       {folders.map(({ id, title }) => (
 
-        <li onClick={(() => setContentView(`folder-${id}`))} className='navigation-bar-item drop-down-item' key={`navigation-folder-item-${id}`}>{title}</li>
+        <li onClick={(() => setContentView(`folder-${id}`))} className='drop-down-item' key={`navigation-folder-item-${id}`}><div className='folderLink'>{title}</div></li>
       ))}
     </div>
   );
