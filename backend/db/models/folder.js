@@ -8,10 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       Folder.belongsTo(models.User, {
         foreignKey: "userId",
         as: "user",
-        onDelete: 'CASCADE',
+
       });
       Folder.hasMany(models.Note, {
         foreignKey: "folderId",
+        onDelete: 'CASCADE',
+        hooks: true,
       });
     }
   };
