@@ -15,7 +15,7 @@ import { removeFolder } from '../../store/folders';
 const Folder = ({folder}) => {
     const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
     const dispatch = useDispatch();
-    const notes = useSelector(state=>Object.values(state.noteState));
+    const notes = useSelector(state=>Object.values(state.noteState[folder.id] || {}));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
     const [isOpen, setIsOpen ] = useState(true);
