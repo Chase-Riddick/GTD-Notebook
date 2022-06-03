@@ -41,17 +41,15 @@ console.log(">>>>>NOTES", notes, folder.id);
         <div className='folder-note-list'>
           <div className='folder-note-list-header'>
             <div
-            onClick={() => setIsOpen(!isOpen)}
             className='list-headers'>
               <h3>{`${folder.title}`}</h3>
             </div>
 
+            <div className='list-header-buttons'>
             <button
             onClick={() => setIsOpen(!isOpen)}
             className='delete-folder-button header-button'
-            >Show Notes</button>
-
-            <div className='list-header-buttons'>
+            >{isOpen ? "Hide" : "Show"}</button>
             <ModifyFoldersModal folder={folder}/>
             <button
             onClick={() => deleteFolder(folder.id)}

@@ -21,19 +21,20 @@ const add_modify = note => ({
     note
 });
 
-const remove = noteId => ({
+const remove = (noteId, folderId) => ({
     type: REMOVE,
     noteId,
+    folderId
   });
 
 
-export const removeNote = (noteId) => async dispatch => {
+export const removeNote = (noteId, folderId) => async dispatch => {
     const response = await csrfFetch(`/api/notes/${noteId}`, {
         method: 'DELETE'
     });
 
     if (response.ok) {
-        dispatch(remove(noteId));
+        dispatch(remove(noteId, folderId));
     }
 };
 
@@ -100,9 +101,9 @@ const noteReducer = (state = initialState, action) => {
             return newState
         case REMOVE:
             newState = {...state};
-            folderNotes = {...state[action.note.folderId]};
-            delete folderNotes[action.note.id];
-            newState[action.note.folderId] = folderNotes;
+            folderNotes = {...state[action.folderId]};
+            delete folderNotes[action.noteId];
+            newState[action.folderId] = folderNotes;
             return newState
         default:
             return state;
