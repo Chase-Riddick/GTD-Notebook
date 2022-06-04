@@ -1,6 +1,6 @@
 // import SplashNavigation from "./SplashNavigation"
 import '../../css/Splash.css'
-import logo from '../../images/logo.png'
+import logo from '../../images/logo-medium.png'
 import LoginFormPage from '../LoginFormPage'
 import SignupFormPage from '../SignupFormPage'
 import { useState } from 'react'
@@ -28,25 +28,31 @@ export default function SplashPage () {
                 <div className="splash-right-view">
                     <div className='user-access-box'>
                         <div className='user-access-box-top'>
-                            <img className='splash-logo' src={logo} alt="Logo" />
-                            <h2 className='title'>A worse than mediocre clone of Evernote.</h2>
+                            <div className='logo-heading-box'>
+                            <div className='logo-container'>
+                            </div>
+                            <div className='heading-box'>
+                            <h1 className='heading'>GET THINGS DONE</h1>
+                            </div>
+                            </div>
+                            <h2 className='title'>A worse than mediocre clone of Evernote that I got done after a week of frustrating labor.</h2>
                         </div>
                         {showLogin &&
                         <LoginFormPage /> }
                         {!showLogin &&
                         <SignupFormPage /> }
                         <div className='user-access-box-bottom'>
-                                <button onClick={(() => loginAsDemoUser())}>Demo</button>
+                                <button  className='splash-button' onClick={(() => loginAsDemoUser())}>Demo</button>
                                 {showLogin &&
                                 <>
                                 <p>Don't have an account?</p>
-                                <button onClick={(() => setShowLogin(false))}>Sign Up</button>
+                                <button className='splash-button' onClick={(() => setShowLogin(false))}>Sign Up</button>
                                 </>
                                 }
                                 {!showLogin &&
                                 <>
                                 <p>Have an account?</p>
-                                <button onClick={(() => setShowLogin(true))}>Log in</button>
+                                <button className='splash-button' onClick={(() => setShowLogin(true))}>Log in</button>
                                 </>
                                 }
 

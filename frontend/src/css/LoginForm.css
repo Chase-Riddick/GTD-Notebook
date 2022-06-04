@@ -4,21 +4,3 @@
     border: 1px black solid;
     margin: auto;
   } */
-
-  .cell {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .user-login-form {
-      width: 270px;
-      padding: 10px;
-      height: 200px;
-  }
-
-  .signup-form {
-    width: 270px;
-    padding: 10px;
-    height: 200px;
-}

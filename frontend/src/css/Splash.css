@@ -2,8 +2,37 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    background-image: url('../images/quatrefoil-pattern-background-teal.jpeg');
+    background-image: url('../images/splash-background.png');
+    background-image: cover;
+    background-position: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
     backdrop-filter: blur(10px);
+}
+
+.logo-heading-box {
+    display: flex;
+    width: 320px;
+}
+
+.heading {
+    font-size: 45px;
+    line-height: 1em;
+}
+
+
+.heading-box {
+    display: flex;
+    align-items: center;
+    width: 120px;
+}
+
+.logo-container {
+    background-image: url('../images/logo-medium.png');
+    background-image: contain;
+    background-repeat: no-repeat;
+    width: 175px;
+    height: 175px;
 }
 
 .splash-left-view {
@@ -21,7 +50,7 @@
 }
 
 .user-access-box {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, 0.9);
     border: black 3px solid;
     display: flex;
     flex-direction: column;
@@ -57,16 +86,30 @@
     align-items: center;
 }
 
-.splash-log {
+.splash-logo {
     margin-bottom: 0;
 }
 
 .title {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 0;
-    color: rgb(1, 68, 60);
+    color: rgb(0, 30, 27);
     font-weight: 700;
     text-shadow: 2px 2px 4px #e0e578;
+    font-family: 'Poppins';
+    line-height: .9em;
+    padding: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.title:hover {
+    margin-top: 0;
+    color: rgb(0, 30, 27);
+    font-weight: 700;
+    text-shadow: 4px 4px 6px #e0e578;
+    font-family: 'Poppins';
 }
 
 .errors-box {
@@ -75,4 +118,81 @@
     color: red;
     margin-left: 0;
     padding-left: 5px;
+}
+
+.splash-button {
+    color: rgb(0, 24, 22);
+    font-weight: 700;
+    border: 2px solid rgb(0, 24, 22);
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.splash-button:hover {
+    text-shadow: #FC0 1px 0 10px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.splash-button:active {
+    text-shadow: rgb(255, 204, 0) 1px 0 10px;
+    box-shadow: #FC0 1px 0 10px;
+}
+
+.input-field {
+    display: flex;
+    border: rgb(0, 24, 22) 2px solid;
+    padding: 5px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.input-icon-div + .splash-icon {
+    color: rgb(0, 24, 22) 2px solid;
+}
+.input-icon-div {
+    margin-right: 6px;
+}
+
+.input-box {
+    border: none;
+    color: rgb(34, 56, 54);
+    font-weight: 600;
+}
+
+.input-box:focus {
+    outline: none;
+}
+
+#splash-icon {
+    color: rgb(34, 56, 54);
+    font-size: 16px;
+}
+
+#splash-icon:hover {
+    text-shadow: none;
+    font-size: 16px;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .user-login-form {
+      width: 270px;
+      padding: 10px;
+      min-height: 200px;
+  }
+
+  .signup-form {
+    width: 270px;
+    padding: 10px;
+    min-height: 200px;
+}
+
+.heading {
+    margin: 0;
 }
