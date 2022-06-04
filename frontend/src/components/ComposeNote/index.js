@@ -37,25 +37,26 @@ export default function ComposeNote() {
 
         let createdNote;
         createdNote = dispatch(addNoteToNotebook(payload));
+        setTitle('');
+        setContent('');
     };
 
     const handleChange = value => {
         setContent(value);
     }
-    console.log("This is Compose")
+    console.log("activeFolderId>>>", activeFolderId)
     return (
         <section className="">
 
-            <h2>Compose Note for {folderView}</h2>
-
-            <form onSubmit={handleSubmit} className="compose-note-form" hidden={!folderView}>
+            <form onSubmit={handleSubmit} className="compose-note-form">
                <input
                     type='text'
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     placeholder='Title'
                     name='title'
-                    className='cell'
+                    className='title-input cell'
+                    maxLength={30}
                     />
                     <ReactQuill
                     theme="snow"
@@ -66,8 +67,10 @@ export default function ComposeNote() {
                     // modules={modules}
                     // formats={formats}
                 />
-                <button type='submit'>Submit</button>
-                <button type="button">Cancel</button>
+                {title && content &&
+                        <button type='submit' className='header-button'>Submit</button>
+                        }
+                <button type="button" className='header-button'>Cancel</button>
 
             </form>
 

@@ -22,8 +22,9 @@
 
 .list-header-buttons {
     display: flex;
-    justify-content: space-between;
-    width: 90%;
+    justify-content: flex-end;
+    width: 96%;
+    margin-bottom: 6px;
 }
 
 .create-note-button {
@@ -39,10 +40,16 @@
     width: 95%;
 }
 
+.list-headers-left {
+    display: flex;
+    align-items: center;
+}
+
 .icon-title {
     padding: 0;
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 
@@ -153,7 +160,7 @@
 }
 
 .add-icon-div > .folder-view-icon {
-    color: rgb(4, 170, 112);
+    color: rgb(8, 64, 57);
     text-shadow: none;
     font-size: 30px;
 }
@@ -171,7 +178,7 @@
 }
 
 .open-button-div > .folder-view-icon {
-    color: black;
+    color: rgb(8, 64, 57);
     font-size: 30px;
     margin-left: 15px;
 }
@@ -179,4 +186,8 @@
 
 .icon-title > h3 {
     margin-left: 15px;
+}
+
+.note-card-list {
+    margin-left: 8px;
 }

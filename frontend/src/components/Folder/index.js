@@ -14,12 +14,13 @@ import { removeFolder } from '../../store/folders';
 import { remove_folder } from '../../store/notes';
 
 const Folder = ({folder}) => {
-    const { contentView, setNoteView, setActiveNote, noteView } = useContentView();
+    const { contentView, setNoteView, setActiveNote, noteView, folderView, setActiveFolderId } = useContentView();
     const dispatch = useDispatch();
     const notes = useSelector(state=>Object.values(state.noteState[folder.id] || {}));
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
-    const [isOpen, setIsOpen ] = useState(true);
+    console.log("this is>>>", folderView);
+    const [isOpen, setIsOpen ] = useState(folderView && folderView > 0 ? false : true);
     const [isModify, setisModify ] = useState(true);
 
     useEffect(() => {
@@ -36,7 +37,7 @@ const Folder = ({folder}) => {
     let res = await dispatch(remove_folder(folderId));
     if (res) dispatch(removeFolder(folderId));
   }
-  console.log(">>>>>NoteView", isOpen);
+  console.log(">>>>>FolderView", folderView);
 console.log(">>>>>NOTES", notes, folder.id);
   return (
     <>
@@ -45,22 +46,8 @@ console.log(">>>>>NOTES", notes, folder.id);
           <div className='folder-note-list-header'>
             <div
             className='list-headers'>
-              <div className='icon-title'>
-              <i className="fa-solid fa-book folder-view-icon"></i>
-              <h3>{`${folder.title}`}</h3>
-              </div>
-              <div className='add-icon-div'>
-              <i class="fa-solid fa-circle-plus folder-view-icon"
-              onClick={(() => {
-                setNoteView('create');
-                setActiveNote(null);
-              })}
-              ></i>
-              </div>
-            </div>
-
-            <div className='list-header-buttons'>
-              <div className='open-button-div'>
+              <div className='list-headers-left'>
+               <div className='open-button-div'>
             {!isOpen &&
             <i
             onClick={() => setIsOpen(!isOpen)}
@@ -70,19 +57,34 @@ console.log(">>>>>NOTES", notes, folder.id);
             onClick={() => setIsOpen(!isOpen)}
             className="fa-solid fa-angle-down folder-view-icon"></i>}
             </div>
-            {/* <button
-            onClick={() => setIsOpen(!isOpen)}
-            className='delete-folder-button header-button'
-            >{isOpen ? "Hide" : "Show"}
-            </button> */}
+              <div className='icon-title'>
+              <i className="fa-solid fa-book folder-view-icon"></i>
+              <h3>{`${folder.title}`}</h3>
+              </div>
+              </div>
+              <div className='add-icon-div'>
+              <i class="fa-solid fa-circle-plus folder-view-icon"
+              onClick={(() => {
+                setActiveFolderId(folder.id);
+                setNoteView('create');
+                setActiveNote(null);
+              })}
+              ></i>
+              </div>
+            </div>
 
+            <div className='list-header-buttons'>
+
+            {isOpen &&
             <div className='edit-and-delete'>
             <ModifyFoldersModal folder={folder}/>
+            {!folderView &&
             <button
             onClick={() => deleteFolder(folder.id)}
             className='delete-folder-button header-button'
-            >Delete</button>
-            </div>
+            >Delete</button>}
+            </div>}
+
             </div>
 
           </div>

@@ -9,7 +9,7 @@ export default function LogoutModal({user}) {
 
   return (
     <>
-        <i class="fa-solid fa-user" onClick={() => setShowModal(true)}></i>
+        <i className="fa-solid fa-user" onClick={() => setShowModal(true)}></i>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <Logout user={user} setShowModal={setShowModal}/>

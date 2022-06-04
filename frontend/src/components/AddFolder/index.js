@@ -2,6 +2,7 @@ import '../../css/ComposeNote.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFolder } from '../../store/folders';
+import '../../css/ComposeNote.css'
 // import Thunk Action Creators
 
 export default function AddFolder({setShowModal}) {
@@ -43,9 +44,11 @@ export default function AddFolder({setShowModal}) {
 
 
     return (
-        <section className="">
-
-            <h2>Create Folder</h2>
+        <div className="add-folder-modal-card">
+            <div className='icon-title'>
+            <h2 className='modal-heading'>Create Folder</h2>
+              <i className="fa-solid fa-book folder-view-icon"></i>
+              </div>
 
             <form onSubmit={handleSubmit} className="create-folder-form" >
 
@@ -55,15 +58,18 @@ export default function AddFolder({setShowModal}) {
                     value={title}
                     placeholder='Title'
                     name='title'
-                    className='cell'
+                    className='cell title-input'
+                    maxLength={20}
                  />
-
-                <button type='submit'>Submit</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                 <br></br>
+                 {title &&
+                <button type='submit' className='header-button'>Submit</button>
+            }
+                <button type="button " onClick={handleCancelClick} className='header-button'>Cancel</button>
 
             </form>
 
-        </section>
+        </div>
 
     )
 }

@@ -55,9 +55,8 @@ function deleteFolder (folderId) {
 
 
           <div>
-          <table>
               {folders.map((folder) => (
-                  <div className='folder-card'>
+                  <div className='folder-card' key={`folder-card-${folder.id}`}>
 
 
                        {/* <div className='folder-card-heading'>
@@ -76,7 +75,6 @@ function deleteFolder (folderId) {
                       <Folder folder={folder}></Folder>
                   </div>
               ))}
-            </table>
           </div>
       </div>
     );
