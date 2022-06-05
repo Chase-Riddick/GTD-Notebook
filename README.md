@@ -1,7 +1,7 @@
-# Traction
+# GTDNote
 
 ## About
-Traction is a work-in-progress fullstack application that allows users to view, create, update, and delete notes and folders to manage tasks, projects or to document anything you may like. It is intended as a clone of Evernote.
+GTDnote is a work-in-progress fullstack application that allows users to view, create, update, and delete notes and folders to manage tasks, projects or to document anything you may like. It is intended as a clone of Evernote.
 
 ## Downloading the App
 Clone this repository: 'git clone https://github.com/Chase-Riddick/GTD-Notebook.git'
