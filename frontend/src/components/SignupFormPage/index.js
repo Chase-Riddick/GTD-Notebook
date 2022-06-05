@@ -37,7 +37,7 @@ function SignupFormPage() {
 
       <div className="cell">
       <div className='input-field'>
-        <div className='input-icon-div'><i id="splash-icon" class="fa-solid fa-lock splash-icon"></i></div>
+        <div className='input-icon-div'><i id="splash-icon"  class="fa-solid fa-envelope"></i></div>
         <input
           type="text"
           value={email}
@@ -52,7 +52,7 @@ function SignupFormPage() {
 
         <div className="cell">
         <div className='input-field'>
-        <div className='input-icon-div'><i id="splash-icon" class="fa-solid fa-lock splash-icon"></i></div>
+        <div className='input-icon-div'><i id="splash-icon"  class="fa-solid fa-user"></i></div>
 
         <input
           type="text"

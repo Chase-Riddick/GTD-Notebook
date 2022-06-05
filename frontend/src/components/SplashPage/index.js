@@ -35,7 +35,7 @@ export default function SplashPage () {
                             <h1 className='heading'>GET THINGS DONE</h1>
                             </div>
                             </div>
-                            <h2 className='title'>A worse than mediocre clone of Evernote that I got done after a week of frustrating labor.</h2>
+                            <h2 className='title'>A worse than mediocre clone of Evernote that I got done after a week of frustrating and disappointing labor.</h2>
                         </div>
                         {showLogin &&
                         <LoginFormPage /> }
