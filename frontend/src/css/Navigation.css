@@ -131,3 +131,23 @@ li div {
     font-size: 12px;
     font-weight: 700;
 }
+
+.nav-link-box {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0;
+    margin-bottom: 6px;
+}
+
+#nav-list-icon {
+    font-size: 12px;
+}
+
+.drop-down-item {
+    align-self: flex-start;
+    margin-left: 0;
+    padding-left: 0;
+    align-items: flex-start;
+}
