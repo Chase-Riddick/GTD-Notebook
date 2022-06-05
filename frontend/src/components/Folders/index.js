@@ -47,6 +47,7 @@ function deleteFolder (folderId) {
       <div className='folders-table'>
 
           <div className='folders-page-header'>
+
             <div className='folders-page-title'><h2> Folders </h2></div>
 
             <div className='folders-header-buttons'><AddFolderModal /></div>
@@ -54,9 +55,8 @@ function deleteFolder (folderId) {
 
 
           <div>
-          <table>
               {folders.map((folder) => (
-                  <div className='folder-card'>
+                  <div className='folder-card' key={`folder-card-${folder.id}`}>
 
 
                        {/* <div className='folder-card-heading'>
@@ -75,7 +75,6 @@ function deleteFolder (folderId) {
                       <Folder folder={folder}></Folder>
                   </div>
               ))}
-            </table>
           </div>
       </div>
     );

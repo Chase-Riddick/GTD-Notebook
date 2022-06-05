@@ -32,28 +32,34 @@ function LoginFormPage() {
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <div className='cell'>
-      <label>
-        Username or Email
-        </label>
+
+        <div className='input-field'>
+          <div className='input-icon-div'><i id="splash-icon"  class="fa-solid fa-user"></i></div>
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
+          require
+          placeholder='Username or Email'
+          className='input-box'
         />
+        </div>
       </div>
       <div className='cell'>
-      <label>
-        Password
-        </label>
+
+        <div className='input-field'>
+        <div className='input-icon-div'><i id="splash-icon" class="fa-solid fa-lock splash-icon"></i></div>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          placeholder='Password'
+          className='input-box'
         />
+        </div>
       </div>
-      <button type="submit">Log In</button>
+      <button type="submit"  className='splash-button'>Log In</button>
     </form>
   );
 }

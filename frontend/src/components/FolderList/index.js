@@ -18,10 +18,22 @@ const FolderList = () => {
   }, [dispatch]);
 
   return (
-    <div className='drop-down-items'>
+    <div className='drop-down-item'>
       {folders.map(({ id, title }) => (
+        <div
+        className='nav-link-box'
+        key={`navigation-folder-item-${id}`}
+        >
+        <div className='nav-list-icon-container'>
+        <i id="nav-list-icon" className="fa-solid fa-book folder-view-icon"></i>
+        </div>
 
-        <li onClick={(() => setContentView(`folder-${id}`))} className='drop-down-item' key={`navigation-folder-item-${id}`}><div className='folderLink'>{title}</div></li>
+        <div className='folderLink'
+        onClick={(() => setContentView(`folder-${id}`))}
+        >{title}</div>
+
+        </div>
+        // <li onClick={(() => setContentView(`folder-${id}`))} className='drop-down-item' key={`navigation-folder-item-${id}`}><div className='folderLink'>{title}</div></li>
       ))}
     </div>
   );

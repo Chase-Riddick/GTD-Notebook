@@ -1,6 +1,6 @@
 .folder-note-list {
     width: 300px;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(227, 245, 243);
     padding: 0%;
     margin: 0%;
     height: 100%;
@@ -12,12 +12,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: white;
+    color: black;
+    border: black solid 3px;
     /* justify-content: space-between; */
     padding: 0;
+    border-radius: 12px;
 }
 
 .list-header-buttons {
-    border: black 1px solid;
+    display: flex;
+    justify-content: flex-end;
+    width: 96%;
+    margin-bottom: 6px;
 }
 
 .create-note-button {
@@ -27,6 +34,22 @@
 
 .list-headers {
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+.list-headers-left {
+    display: flex;
+    align-items: center;
+}
+
+.icon-title {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 
 
@@ -43,10 +66,8 @@
 
 .folders-table {
     margin: auto;
-    width: 80%;
+    width: 90%;
     max-width: 550px;
-    border: black 1px solid;
-    border-radius: 12px;
     /* height: 80vh; */
     padding: 20px;
 
@@ -59,6 +80,7 @@
     margin-bottom: 30px;
     margin-top: 10px;
     padding-bottom: 20px;
+
 }
 
 .folders-table > tr {
@@ -76,6 +98,11 @@
     padding: 0;
     margin: 0;
     margin-left: 5px;
+}
+
+.folder-card {
+    margin-bottom: 15px;
+    border-radius: 12px;
 }
 
 .folder-card-heading {
@@ -112,4 +139,55 @@
 
 .fa-solid.fa-plus {
     color: red;
+}
+
+.icon-title > .folder-view-icon {
+    color: black;
+}
+
+.icon-title > .folder-view-icon {
+    color: black;
+    font-size: 30px;
+}
+
+.icon-title > .folder-view-icon:hover {
+    text-shadow: none;
+}
+
+.icon-title > .folder-view-icon:active {
+    text-shadow: none;
+    color: black;
+}
+
+.add-icon-div > .folder-view-icon {
+    color: rgb(8, 64, 57);
+    text-shadow: none;
+    font-size: 30px;
+}
+
+.add-icon-div > .folder-view-icon:hover {
+    color: rgb(4, 170, 112);
+    text-shadow: none;
+    font-size: 35px;
+}
+
+.add-icon-div > .folder-view-icon:active {
+    color: rgb(4, 170, 112);
+    text-shadow: #FC0 1px 0 10px;
+    font-size: 35px;
+}
+
+.open-button-div > .folder-view-icon {
+    color: rgb(8, 64, 57);
+    font-size: 30px;
+    margin-left: 15px;
+}
+
+
+.icon-title > h3 {
+    margin-left: 15px;
+}
+
+.note-card-list {
+    margin-left: 8px;
 }

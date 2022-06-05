@@ -29,7 +29,9 @@ router.put(
 
   router.delete('/:id',
   asyncHandler(async function (req, res) {
+    console.log("API-PRAM->>", req.params.id);
     const folder = await Folder.findByPk(req.params.id);
+    console.log("API-folder->>", req.params.id);
     if (folder) {
       await folder.destroy();
       return res.json({message: 'Success'});

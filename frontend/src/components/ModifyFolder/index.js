@@ -43,9 +43,11 @@ export default function ModifyFolder({setShowModal, folder}) {
 
 
     return (
-        <section className="">
-
-            <h2>Modify Folder</h2>
+        <div className="add-folder-modal-card">
+        <div className='icon-title'>
+        <h2 className='modal-heading'>Edit Folder</h2>
+          <i className="fa-solid fa-book folder-view-icon"></i>
+          </div>
 
             <form onSubmit={handleSubmit} className="create-folder-form" >
 
@@ -55,15 +57,18 @@ export default function ModifyFolder({setShowModal, folder}) {
                     value={title}
                     placeholder='Title'
                     name='title'
-                    className='cell'
+                    className='cell title-input'
+                    maxLength={20}
                  />
-
-                <button type='submit'>Submit</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <br></br>
+                {title &&
+                <button type='submit' className='header-button'>Submit</button>
+                    }
+                <button type="button" onClick={handleCancelClick} className='header-button'>Cancel</button>
 
             </form>
 
-        </section>
+        </div>
 
     )
 }

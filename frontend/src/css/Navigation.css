@@ -48,7 +48,25 @@
 
 .fa-solid:hover {
     font-size: 30px;
+    text-shadow: #FC0 1px 0 10px;
+
 }
+
+.fa-brands:hover {
+    font-size: 30px;
+    text-shadow: #FC0 0 0 13px;
+}
+
+.fa-solid:active {
+    font-size: 30px;
+    color: rgb(11, 170, 170);
+    text-shadow: #FC0 1px 0 10px;
+}
+
+.fa-brands:active {
+    font-size: 30px;
+}
+
 
 .fa-brands:hover {
     font-size: 30px;
@@ -96,6 +114,26 @@ li div {
     display: inline;
 }
 
+.folderLink:hover {
+    text-shadow: #FC0 0 0 13px;
+}
+
+.folderLink:active {
+    text-shadow: #FC0 3px 3px 15px;
+    font-size: 13px;
+}
+
+/* .fa-brands:hover {
+    font-size: 30px;
+    text-shadow: #FC0 0 0 13px;
+}
+
+.fa-solid:active {
+    font-size: 30px;
+    color: rgb(11, 170, 170);
+    text-shadow: #FC0 1px 0 10px;
+} */
+
 /* .link {
     font-size: 10px;
 } */
@@ -112,4 +150,24 @@ li div {
     padding: 0;
     font-size: 12px;
     font-weight: 700;
+}
+
+.nav-link-box {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0;
+    margin-bottom: 6px;
+}
+
+#nav-list-icon {
+    font-size: 12px;
+}
+
+.drop-down-item {
+    align-self: flex-start;
+    margin-left: 0;
+    padding-left: 0;
+    align-items: flex-start;
 }

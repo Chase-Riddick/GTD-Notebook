@@ -48,7 +48,7 @@ const Content = () => {
         {
           'folder': <Folder folder={getFolder()}/>,
           'foldersList': <Folders />,
-          'home': <Home />
+          // 'home': <Home />
         }[contentType()]
       }
       </div>

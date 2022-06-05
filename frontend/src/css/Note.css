@@ -9,14 +9,31 @@
     font-weight: 600;
 }
 
+.icon-title > .note-icon {
+    color: rgb(8, 64, 57);
+    font-size: 16px;
+}
+
+.icon-title > .note-icon:hover {
+    color: rgb(8, 64, 57);
+    text-shadow: none;
+    font-size: 18px;
+}
+
+.note-card-header-div {
+    display: flex;
+}
+
 .note-card:hover {
     border: black 1px solid;
     background-color: white;
-
+    box-shadow: #FC0 1px 0 15px;
 }
 
 .note-card:active {
-    border: rgb(237, 74, 49) 2px solid;
+    border: rgb(247, 241, 81) 1px solid;
+    box-shadow: rgb(241, 237, 97) 1px 0 20px;
+
 }
 
 .note-view-header {
@@ -25,6 +42,10 @@
 }
 
 .header-button {
-    background-color: rgb(249, 131, 112);
+    background-color: rgb(250, 246, 204);
+    border: rgb(6, 62, 55) 2px solid;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
     border-radius: 4px;
+    margin-left: 3px;
 }

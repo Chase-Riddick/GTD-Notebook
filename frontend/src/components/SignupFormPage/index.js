@@ -31,54 +31,70 @@ function SignupFormPage() {
 
   return (
     <form onSubmit={handleSubmit} className="signup-form">
-      <ul>
+      <ul className="errors-box">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+
       <div className="cell">
-      <label>
-        Email
-        </label>
+      <div className='input-field'>
+        <div className='input-icon-div'><i id="splash-icon"  class="fa-solid fa-envelope"></i></div>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder="Email"
+          className='input-box'
         />
         </div>
+        </div>
+
+
         <div className="cell">
-      <label>
-        Username
-        </label>
+        <div className='input-field'>
+        <div className='input-icon-div'><i id="splash-icon"  class="fa-solid fa-user"></i></div>
+
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          placeholder="Username"
+          className='input-box'
         />
         </div>
+        </div>
+
       <div className="cell">
-      <label>
-        Password
-        </label>
+      <div className='input-field'>
+        <div className='input-icon-div'><i id="splash-icon" class="fa-solid fa-lock splash-icon"></i></div>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          placeholder="Password"
+          className='input-box'
         />
         </div>
+        </div>
+
+
       <div className="cell">
-      <label>
-        Confirm Password
-        </label>
+      <div className='input-field'>
+        <div className='input-icon-div'><i id="splash-icon" class="fa-solid fa-lock splash-icon"></i></div>
         <input
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          placeholder="Confirm Password"
+          className='input-box'
         />
         </div>
-      <button type="submit">Sign Up</button>
+        </div>
+
+      <button className='splash-button' type="submit">Sign Up</button>
     </form>
   );
 }

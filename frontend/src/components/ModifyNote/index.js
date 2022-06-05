@@ -27,12 +27,14 @@ console.log("This changed.")
         setUserId(sessionUser.id);
     }, [ contentView, noteView, folderView ]);
 
+    useEffect(() => {
+        setAllowEdit(false);
+    }, [noteView])
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const folderId = activeFolderId;
-        console.log(">>LINE 32", folderId )
 
         let noteId = noteView.split('-')[1]
 
@@ -42,16 +44,14 @@ console.log("This changed.")
             title,
             content,
         }
-        console.log(">>LINE45", activeNote);
         let createdNote;
         createdNote = dispatch(editNote(payload, noteId ));
-
+        setAllowEdit(false);
     };
 
     const handleChange = value => {
         setContent(value );
     }
-    console.log("This is Modify")
 
     function deleteNote () {
         let noteId = noteView.split('-')[1];
@@ -83,7 +83,6 @@ console.log("This changed.")
                 </div>
             </div>
 
-            <h2>Compose Note for {folderView}</h2>
 
             <form onSubmit={handleSubmit} className="compose-note-form" hidden={!folderView}>
                <input
@@ -92,7 +91,8 @@ console.log("This changed.")
                     value={title}
                     placeholder='Title'
                     name='title'
-                    className='cell'
+                    className='title-input cell'
+                    maxLength={30}
                     readOnly={!allowEdit}
                     />
                     <ReactQuill
@@ -107,8 +107,10 @@ console.log("This changed.")
                 />
                 {allowEdit &&
                     <div>
-                        <button type='submit' onClick={handleSubmit}>Submit</button>
-                        <button type="button">Cancel</button>
+                        {title && content &&
+                        <button type='submit' className='header-button' onClick={handleSubmit}>Submit</button>
+                        }
+                        <button type="button" className='header-button'>Cancel</button>
                     </div>
                 }
 
